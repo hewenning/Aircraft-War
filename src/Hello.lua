@@ -2,8 +2,6 @@
 require "cocos.init"
 require "ui"
 
-
-
 -- cclog信息 --
 cclog = function(...)
     print(string.format(...))
@@ -31,6 +29,7 @@ local function initGLView()
     director:setAnimationInterval(1.0 / 60)
     --director:setFrameTime(true)
 end
+
 
 local function main()
 
@@ -66,7 +65,33 @@ local function main()
     -- 获取到英雄精灵的节点 --
     local hero = Canvas:getChildByName("hero")
 
+    -- 创建新的图层 -- 
+    local layer = cc.Layer:create()
+
     -- 加入键盘事件 -- 
+    local function onKeyPressed(keyCode, event)
+        local buf = string.format("%d DOWN", keyCode)
+        local node = event:getCurrentTarget()
+        print(buf)
+    end
+ 
+    local function onKeyReleased(keyCode, event)
+        local buf = string.format("%d UP", keyCode)
+        local node = event:getCurrentTarget()
+        print(buf)
+    end
+ 
+    local statusLabel = cc.Label:createWithSystemFont("NO EVENT", "Arial", 25)
+    statusLabel:setPosition(100, 100)
+    layer:addChild(statusLabel)
+
+    local listener = cc.EventListenerKeyboard:create()
+    listener:registerScriptHandler(onKeyPressed, cc.Handler.EVENT_KEYBOARD_PRESSED)
+    listener:registerScriptHandler(onKeyReleased, cc.Handler.EVENT_KEYBOARD_RELEASED)
+ 
+    cc.Director:getInstance():getEventDispatcher():addEventListenerWithSceneGraphPriority(listener, layer)
+
+    scene:addChild(layer)
 
     -- 运行时的时候查看节点树 --
     do
