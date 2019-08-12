@@ -15,23 +15,22 @@ local function initGLView()
     local glView = director:getOpenGLView()
     if nil == glView then
         -- 窗口大小
-        glView = cc.GLViewImpl:createWithRect("2048" ,cc.rect(0, 0, 960, 640))
+        glView = cc.GLViewImpl:createWithRect("Aircraft War" ,cc.rect(0, 0, 640, 960))
         director:setOpenGLView(glView)
     end
 
     director:setOpenGLView(glView)
 
     -- 设计分辨率
-    glView:setDesignResolutionSize(960, 640, cc.ResolutionPolicy.NO_BORDER)
+    glView:setDesignResolutionSize(640, 960, cc.ResolutionPolicy.NO_BORDER)
 
     -- 打开FPS的开关
-    director:setDisplayStats(false)
+    director:setDisplayStats(true)
 
     --设置FPS，默认值为1.0/60
     director:setAnimationInterval(1.0 / 60)
+    --director:setFrameTime(true)
 end
-
-
 
 local function main()
 
@@ -41,7 +40,7 @@ local function main()
     -- 初始化OpenGL --
     initGLView()
 
-    ---------------
+    -------------
     -- 开始运行 --
     -- 创建场景 --
     -- local sceneGame = cc.Scene:create()
@@ -50,18 +49,30 @@ local function main()
     -- -- 运行场景
     -- cc.Director:getInstance():runWithScene(sceneGame)    
 
-
     local creatorReader = creator.CreatorReader:createWithFilename('Resources/creator/Scene/helloworld.ccreator')
     creatorReader:setup()
     local scene = creatorReader:getSceneGraph()
     cc.Director:getInstance():replaceScene(scene)
+    -- 获取场景下的子节点 -- 
+    local children = scene:getChildren()
+    local Canvas = children[2]
 
+    --测试能否正常获取节点的数值 --
+    Canvas:getChildByName("gamelabel"):setString("Aircraft War!")
+    Canvas:getChildByName("button"):addClickEventListener(function()
+        print("hewenning")
+    end)
 
+    -- 获取到英雄精灵的节点 --
+    local hero = Canvas:getChildByName("hero")
+
+    -- 加入键盘事件 -- 
+
+    -- 运行时的时候查看节点树 --
     do
         local poco = require('poco.poco_manager')
         poco:init_server(15005)  -- default port number is 15004, change to another if you like
     end
-
 
 end
 
