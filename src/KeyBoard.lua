@@ -1,6 +1,7 @@
 require "move"
 keyboard = {}
 
+
 function keyboard.getKeyBoardStatus()
     -- 创建新的图层 -- 
     local layer = cc.Layer:create()
