@@ -2,6 +2,7 @@
 require "cocos.init"
 require "keyboard"
 require "load"
+
 hello = {hero = 1,}
 
 -- cclog–≈œ¢ --

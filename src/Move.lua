@@ -21,10 +21,6 @@ function move.dodown()
     load.hero:runAction(cc.MoveBy:create(0.1, cc.p(0, -8)))
 end
 
--- 检测是否被按下 --
-function move.isKeyPreesed()
-    
-end
 
 -- 更新英雄行为的函数 -- 
 function move.update()

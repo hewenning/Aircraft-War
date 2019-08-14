@@ -1,4 +1,6 @@
-load = {hero = 1,}
+require "schedule"
+
+load = {hero = 1, Canvas =1,}
 
 function load.loadModel()
 
@@ -8,7 +10,7 @@ function load.loadModel()
     cc.Director:getInstance():replaceScene(scene)
     -- 获取场景下的节点 -- 
     local children = scene:getChildren()
-    local Canvas = children[2]
+    load.Canvas = children[2]
 
     ------------------
     -- 键盘控制飞机  --
@@ -16,19 +18,21 @@ function load.loadModel()
     --把键盘事件添加进场景
     scene:addChild(keyboard.getKeyBoardStatus())
     -- 获取到英雄精灵的节点 --
-    local temp = Canvas:getChildByName("hero")
+    local temp = load.Canvas:getChildByName("hero")
     load.hero = temp
 
     -------------------
     -- 获取到标签节点 --
     -------------------
     -- Canvas:getChildByName("gamelabel"):setString("")    
-    local label = Canvas:getChildByName("label")
+    local label = load.Canvas:getChildByName("label")
     local gamelabel = label:getChildByName("gamelabel")
     gamelabel:setString("")
 
-    -- 打开英雄节点的默认调度器 --
-    load.hero:scheduleUpdateWithPriorityLua(move.update, 0)
+    -------------------
+    -- 启动调度器设置 --
+    -------------------
+    schedule.setup()
 
 end
 
