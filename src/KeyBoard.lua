@@ -1,5 +1,6 @@
 require "move"
 
+
 keyboard = {keyStatus = {},}
 
 
@@ -15,13 +16,8 @@ function keyboard.getKeyBoardStatus()
     end
  
     local function onKeyReleased(keyCode, event)
-
-        -- local creatorReader = creator.CreatorReader:createWithFilename('Resources/creator/Scene/bullet.ccreator')
-        -- creatorReader:setup()
-        -- local node = creatorReader:getSceneGraph():getChildByName("content")
-        -- node:removeFromParentAndCleanup(false);
-        -- node:setPosition(cc.p(300,200));        
-        -- cc.Director:getInstance():getRunningScene():addChild(node);
+        -- ≤‚ ‘Õ‚–«»À¿‡ --
+    
         keyboard.keyStatus[keyCode] = 0
         local buf = string.format("%d UP", keyCode)
         print(buf)

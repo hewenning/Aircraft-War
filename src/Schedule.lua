@@ -15,7 +15,16 @@ function schedule.setup()
 		end
     end
     -- 打开背景的调度器 -- 
-    backgroundEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(backgroundMove, 0.01,false)
+    backgroundEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(backgroundMove, 1/60, false)
+
+    -- 打开子弹的调度器 --
+    bulletEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(bullet.update, 0.08, false)
+
+    -- 销毁已经执行完动画的子弹--
+    -- bulletDestory = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(bullet.checkBulletAndRemove, 0.08, false)
+
+    -- 创建敌机A的调度器 -- 
+    --alienAEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(alien.updateA, 0.5, false)
 end
 
 return schedule
