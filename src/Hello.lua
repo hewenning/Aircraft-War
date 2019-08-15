@@ -2,6 +2,7 @@
 require "cocos.init"
 require "keyboard"
 require "load"
+require "bullet"
 
 hello = {hero = 1,}
 
@@ -44,6 +45,11 @@ local function main()
 
     -- 加载模型 --
     load.loadModel()
+    
+    -- 测试子弹类 --
+    -- bullet = Bullet.new(100, 100)
+    -- bullet:setPos(300, 200)
+    -- print(bullet)
 
     -- 运行时的时候查看节点树 --
     do
@@ -56,7 +62,4 @@ end
 main()
 
 return hello
-
-
-
 
