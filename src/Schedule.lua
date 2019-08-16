@@ -22,9 +22,10 @@ function schedule.setup()
 
     -- 销毁已经执行完动画的子弹--
     -- bulletDestory = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(bullet.checkBulletAndRemove, 0.08, false)
-
+    
     -- 创建敌机A的调度器 -- 
-    --alienAEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(alien.updateA, 0.5, false)
+    --alienAEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(alien.updateA, 1, false)
+
 end
 
 return schedule
