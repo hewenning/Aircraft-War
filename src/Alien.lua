@@ -28,14 +28,14 @@ function Alien:play()
     -- self:runAction(cc.Sequence:create(cc.ScaleTo:create(0, 0.1, 0.1), cc.ScaleTo:create(0.5, 1, 1)))
 end
 
-function Alien:getAlien(x, y)
-    self.x = x
-    self.y = y
+function Alien:getAlien()
     self:setAnchorPoint(0.5, 0) 
     self:setPosition(self.x, self.y)
     local action = transition.sequence( 
         {
-            cc.MoveBy:create(1, cc.p(0, -250)), 
+            --cc.MoveBy:create(1, cc.p(0, -200)),
+            --cc.MoveBy:create(3, cc.p(0, 0)),
+            cc.MoveBy:create(6, cc.p(0, -1200)), 
             cc.CallFunc:create( function()
                 self:removeFromParent()
                 print("The alien has been cleared.")
@@ -43,6 +43,17 @@ function Alien:getAlien(x, y)
         }
     )
     self:runAction(action)
+end
+
+function Alien:randomPosition()
+    -- 计算出随机的位置 --
+    local leftMinX = -320 + self:getContentSize().width / 2
+    local rightMaxX = 320 - self:getContentSize().width / 2
+    -- math.randomseed(tostring(os.time()):reverse():sub(1, 6))
+    local x = math.random(leftMinX, rightMaxX)
+    local y = 480
+    self.x = x
+    self.y = y
 end
 
 function Alien:getLife()
@@ -71,7 +82,8 @@ function alien.updateA()
     -- print(">>>>>>>>")
     print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     local alienA = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
-    alienA:getAlien(300, 200)
+    alienA:randomPosition()
+    alienA:getAlien()
     alienA:play() 
 end
 
@@ -83,7 +95,8 @@ function alien.updateB()
     -- print(">>>>>>>>")
     print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     local alienB = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
-    alienB:getAlien(200, 200)
+    alienB:randomPosition()
+    alienB:getAlien()
     alienB:play() 
 end
 
@@ -95,9 +108,9 @@ function alien.updateC()
     -- print(">>>>>>>>")
     print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     local alienC = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
-    alienC:getAlien(100, 200)
+    alienC:randomPosition()
+    alienC:getAlien()
     alienC:play() 
 end
-
 
 return alien
