@@ -33,6 +33,16 @@ function Alien:getAlien(x, y)
     self.y = y
     self:setAnchorPoint(0.5, 0) 
     self:setPosition(self.x, self.y)
+    local action = transition.sequence( 
+        {
+            cc.MoveBy:create(1, cc.p(0, -250)), 
+            cc.CallFunc:create( function()
+                self:removeFromParent()
+                print("The alien has been cleared.")
+            end ),          
+        }
+    )
+    self:runAction(action)
 end
 
 function Alien:getLife()
@@ -47,6 +57,12 @@ function Alien:getScore()
 	return self.score
 end
 
+function Alien:destroy()
+    if self.life <= 0 then
+       self:removeFromParent() 
+    end
+end
+
 function alien.updateA()
     -- 测试能否正常获取敌机 --
     -- print(">>>>>>>>")
@@ -58,5 +74,30 @@ function alien.updateA()
     alienA:getAlien(300, 200)
     alienA:play() 
 end
+
+function alien.updateB()
+    -- 测试能否正常获取敌机 --
+    -- print(">>>>>>>>")
+    -- alien = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
+    -- alien:getAlien(300, 200) 
+    -- print(">>>>>>>>")
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    local alienB = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
+    alienB:getAlien(200, 200)
+    alienB:play() 
+end
+
+function alien.updateC()
+    -- 测试能否正常获取敌机 --
+    -- print(">>>>>>>>")
+    -- alien = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
+    -- alien:getAlien(300, 200) 
+    -- print(">>>>>>>>")
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    local alienC = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
+    alienC:getAlien(100, 200)
+    alienC:play() 
+end
+
 
 return alien
