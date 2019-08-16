@@ -20,6 +20,9 @@ function load.loadModel()
     -- 获取到英雄精灵的节点 --
     local temp = load.Canvas:getChildByName("hero")
     load.hero = temp
+    local fire = load.hero:getChildByName("fireleft")
+    -- fire:setStartColor({255, 0, 0, 0})
+    -- fire:setEndColor({255, 0, 0, 0})
 
     -------------------
     -- 获取到标签节点 --

@@ -32,7 +32,7 @@ end
 function Bullet:play()
     local action = transition.sequence( 
         {
-            cc.MoveBy:create(3, cc.p(0, 1000)), 
+            cc.MoveBy:create(2, cc.p(0, 1000)), 
             cc.CallFunc:create( function()
                 self:removeFromParent()
                 print("The bullet has been cleared.")
