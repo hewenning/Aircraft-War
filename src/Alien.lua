@@ -17,19 +17,22 @@ function Alien:ctor(path, name, life, score, level)
     self.level = level
     local creatorReader = creator.CreatorReader:createWithFilename(path)
     creatorReader:setup()
-    self.node = creatorReader:getSceneGraph():getChildByName(name)
-    self.node:removeFromParent(false)
-    load.Canvas:addChild(self.node)
+    local alienA = creatorReader:getSceneGraph():getChildByName(name)
+    alienA:removeFromParent(false)
+    self:addChild(alienA)
+    load.Canvas:addChild(self)
 end
  
 function Alien:play()
     -- Ëõ·Å¶¯»­ --
-    self.node:runAction(cc.Sequence:create(cc.ScaleTo:create(0, 0.1, 0.1), cc.ScaleTo:create(0.5, 1, 1)))
+    -- self:runAction(cc.Sequence:create(cc.ScaleTo:create(0, 0.1, 0.1), cc.ScaleTo:create(0.5, 1, 1)))
 end
 
 function Alien:getAlien(x, y)
-    self.node:setAnchorPoint(0.5, 0) 
-    self.node:setPosition(x, y)
+    self.x = x
+    self.y = y
+    self:setAnchorPoint(0.5, 0) 
+    self:setPosition(self.x, self.y)
 end
 
 function Alien:getLife()
