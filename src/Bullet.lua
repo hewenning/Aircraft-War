@@ -1,5 +1,4 @@
-
-transition = require("cocos.framework.transition")
+transition = require "cocos.framework.transition"
 
 bullet = {}
 

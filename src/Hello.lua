@@ -47,10 +47,8 @@ local function main()
     -- 加载模型 --
     load.loadModel()
     
-    -- 测试子弹类 --
-    -- bullet = Bullet.new(100, 100)
-    -- bullet:setPos(300, 200)
-    -- print(bullet)
+    -- 传入随机种子 --
+    math.randomseed(tostring(os.time()):reverse():sub(1, 6))
 
     -- 运行时的时候查看节点树 --
     do

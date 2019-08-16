@@ -22,8 +22,8 @@ function schedule.setup()
   
     -- 创建敌机AB和C的调度器 -- 
     alienAEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(alien.updateA, 1, false)
-    alienBEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(alien.updateB, 5, false)
-    alienCEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(alien.updateC, 10, false)
+    alienBEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(alien.updateB, 5.5, false)
+    alienCEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(alien.updateC, 9.5, false)
 
 
 end
