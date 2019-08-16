@@ -22,11 +22,16 @@ function Alien:ctor(path, name, life, score, level)
     load.Canvas:addChild(self.node)
 end
  
+function Alien:play()
+    -- 缩放动画 --
+    self.node:runAction(cc.Sequence:create(cc.ScaleTo:create(0, 0.1, 0.1), cc.ScaleTo:create(0.5, 1, 1)))
+end
 
 function Alien:getAlien(x, y)
-    self.node:setPosition(x, y)
     self.node:setAnchorPoint(0.5, 0) 
+    self.node:setPosition(x, y)
 end
+
 function Alien:getLife()
 	return self.life
 end
@@ -39,14 +44,16 @@ function Alien:getScore()
 	return self.score
 end
 
-
-function alien.updatedA()
+function alien.updateA()
     -- 测试能否正常获取敌机 --
     -- print(">>>>>>>>")
     -- alien = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
     -- alien:getAlien(300, 200) 
     -- print(">>>>>>>>")
     print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    local alienA = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
+    alienA:getAlien(300, 200)
+    alienA:play() 
 end
 
 return alien

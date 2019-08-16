@@ -3,6 +3,7 @@ require "cocos.init"
 require "keyboard"
 require "load"
 require "bullet"
+require "alien"
 
 hello = {hero = 1,}
 
