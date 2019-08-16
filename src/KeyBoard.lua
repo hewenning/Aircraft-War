@@ -19,7 +19,7 @@ function keyboard.getKeyBoardStatus()
         -- ≤‚ ‘Õ‚–«»À¿‡ --
         -- local alienA = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
         -- alienA:getAlien(300, 200)
-        
+
         keyboard.keyStatus[keyCode] = 0
         local buf = string.format("%d UP", keyCode)
         print(buf)

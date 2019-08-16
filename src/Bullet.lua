@@ -27,7 +27,6 @@ function Bullet:getBullet()
     print(self.x,self.y )
     self:setPosition(self.x - 319.5, self.y - 480)
     self:setAnchorPoint(0.5, 0) 
-    -- print(self.node)
 end
 
 function Bullet:play()
@@ -43,10 +42,6 @@ function Bullet:play()
     self:runAction(action)
 end
 
-function Bullet:destroy()
-    load.Canvas:removeChild(self.node)
-end
-
 -- 检测空格键或则回车按下的时候 --
 function bullet.update()
     -- print(">>>>>>")
@@ -54,28 +49,7 @@ function bullet.update()
         local newbullet = Bullet.new(0, 0)
         newbullet:getBullet()
         newbullet:play()
-        -- -- 小于等于9，即屏幕上最多存在10颗子弹 --  
-        -- if table.getn(bulletsObj) <= 9 then
-        --     newbullet = Bullet.new(0, 0)
-        --     newbullet:getBullet()
-        --     newbullet:play()
-        --     -- print(newbullet:getPositionY())
-        --     table.insert(bulletsObj, newbullet)
-        -- end
     end
-end
-
-
--- -- 删除子弹 -- 
-function bullet.checkBulletAndRemove()
-    print(">>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<")
-    -- for i, v in ipairs(bulletsObj) do
-    --     print(v.moveTo:isDone())
-    -- end
-    -- if self.moveTo:isDone() then
-    --     load.Canvas:removeChild(self.node)
-    --     print("Canvas had deleted.")
-    -- end
 end
 
 return bullet
