@@ -1,4 +1,4 @@
-alien = {enemy= {},Tag = 0,}
+alien = {set = {},Tag = 0, i = 0,}
 
 alien.alienAPath = 'Resources/creator/Scene/alienA.ccreator'
 alien.alienBPath = 'Resources/creator/Scene/alienB.ccreator'
@@ -47,15 +47,18 @@ end
 function Alien:getAlien()
     self:setAnchorPoint(0.5, 0) 
     self:setPosition(self.x, self.y)
+end
+
+function Alien:play()
     local action = transition.sequence( 
         {
             --cc.MoveBy:create(1, cc.p(0, -200)),
             --cc.MoveBy:create(3, cc.p(0, 0)),
             cc.MoveBy:create(6, cc.p(0, -1200)), 
-            cc.CallFunc:create( function()
-                self:removeFromParent()
-                print("The alien has been cleared.")
-            end ),          
+            -- cc.CallFunc:create( function()
+            --     self:removeFromParent()
+            --     print("The alien has been cleared.")
+            -- end ),          
         }
     )
     self:runAction(action)
@@ -85,9 +88,11 @@ function Alien:getScore()
 end
 
 function Alien:destroy()
-    if self.life <= 0 then
-       self:removeFromParent() 
-    end
+    -- if self.life <= 0 then
+    --    self:removeFromParent() 
+    -- end
+    self:removeFromParent()
+    print("The alien has been cleared.")
 end
 
 function alien.updateA()
@@ -96,38 +101,101 @@ function alien.updateA()
     -- alien = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
     -- alien:getAlien(300, 200) 
     -- print(">>>>>>>>")
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    local alienA = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
-    alienA:randomPosition()
-    --alienA:getBox()
-    alienA:getAlien()
-    table.insert(alien.enemy, alienA)
+    -- print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    -- local alienA = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
+    -- alienA:randomPosition()
+    -- --alienA:getBox()
+    -- alienA:getAlien()
+    -- table.insert(alien.enemy, alienA)
+    -- 不断的把敌机存入新的Table里面 --
+    if alien.Tag <= 4 then
+        alien.set[alien.Tag] = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
+        alien.set[alien.Tag]:randomPosition()
+        alien.set[alien.Tag]:getAlien()
+        alien.set[alien.Tag]:play()
+        alien.Tag = alien.Tag + 1
+    elseif alien.Tag == 5 then
+        if alien.i < 4 then
+            alien.set[alien.i]:destroy()
+            alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
+            alien.set[alien.i]:randomPosition()
+            alien.set[alien.i]:getAlien()
+            alien.set[alien.i]:play()
+            alien.i = alien.i + 1
+        elseif alien.i == 4  then
+            alien.set[alien.i]:destroy()
+            alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
+            alien.set[alien.i]:randomPosition()
+            alien.set[alien.i]:getAlien()
+            alien.set[alien.i]:play()
+            alien.i = 1
+        end
+    end
+
 end
 
 function alien.updateB()
-    -- 测试能否正常获取敌机 --
-    -- print(">>>>>>>>")
-    -- alien = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
-    -- alien:getAlien(300, 200) 
-    -- print(">>>>>>>>")
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    local alienB = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
-    alienB:randomPosition()
-    alienB:getAlien()
-    table.insert(alien.enemy, alienB) 
+    -- print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    -- local alienB = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
+    -- alienB:randomPosition()
+    -- alienB:getAlien()
+    -- table.insert(alien.enemy, alienB) 
+    if alien.Tag <= 4 then
+        alien.set[alien.Tag] = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
+        alien.set[alien.Tag]:randomPosition()
+        alien.set[alien.Tag]:getAlien()
+        alien.set[alien.Tag]:play()
+        alien.Tag = alien.Tag + 1
+    elseif alien.Tag == 5 then
+        if alien.i < 4 then
+            alien.set[alien.i]:destroy()
+            alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
+            alien.set[alien.i]:randomPosition()
+            alien.set[alien.i]:getAlien()
+            alien.set[alien.i]:play()
+            alien.i = alien.i + 1
+        elseif alien.i == 4  then
+            alien.set[alien.i]:destroy()
+            alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
+            alien.set[alien.i]:randomPosition()
+            alien.set[alien.i]:getAlien()
+            alien.set[alien.i]:play()
+            alien.i = 1
+        end
+
+    end
 end
 
 function alien.updateC()
-    -- 测试能否正常获取敌机 --
-    -- print(">>>>>>>>")
-    -- alien = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
-    -- alien:getAlien(300, 200) 
-    -- print(">>>>>>>>")
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    local alienC = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
-    alienC:randomPosition()
-    alienC:getAlien()
-    table.insert(alien.enemy, alienC)
+    -- print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    -- local alienC = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
+    -- alienC:randomPosition()
+    -- alienC:getAlien()
+    -- table.insert(alien.enemy, alienC)
+    if alien.Tag <= 4 then
+        alien.set[alien.Tag] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
+        alien.set[alien.Tag]:randomPosition()
+        alien.set[alien.Tag]:getAlien()
+        alien.set[alien.Tag]:play()
+        alien.Tag = alien.Tag + 1
+    elseif alien.Tag == 5 then
+        if alien.i < 4 then
+            alien.set[alien.i]:destroy()
+            alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
+            alien.set[alien.i]:randomPosition()
+            alien.set[alien.i]:getAlien()
+            alien.set[alien.i]:play()
+            alien.i = alien.i + 1
+        elseif alien.i == 4  then
+            alien.set[alien.i]:destroy()
+            alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
+            alien.set[alien.i]:randomPosition()
+            alien.set[alien.i]:getAlien()
+            alien.set[alien.i]:play()
+            alien.i = 1
+        end
+
+    end
 end
 
 return alien
