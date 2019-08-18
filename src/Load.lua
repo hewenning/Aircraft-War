@@ -1,6 +1,6 @@
 require "schedule"
 
-load = {hero = 1, Canvas =1,}
+load = {hero = 1, Canvas =1, heroBox = 1,}
 
 function load.loadModel()
 
@@ -20,10 +20,14 @@ function load.loadModel()
     -- 获取到英雄精灵的节点 --
     local temp = load.Canvas:getChildByName("hero")
     load.hero = temp
+    -- 英雄的节点 --
+    load.heroBox = load.hero:getBoundingBox() 
+    print(load.heroBox)
     local fire = load.hero:getChildByName("fireleft")
     -- fire:setStartColor({255, 0, 0, 0})
     -- fire:setEndColor({255, 0, 0, 0})
-
+    
+    
     -------------------
     -- 获取到标签节点 --
     -------------------

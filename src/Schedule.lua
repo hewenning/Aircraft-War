@@ -15,16 +15,18 @@ function schedule.setup()
 		end
     end
     -- 打开背景的调度器 -- 
-    backgroundEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(backgroundMove, 1/60, false)
+    backgroundEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(backgroundMove, 1/60, false)
 
     -- 打开子弹的调度器 --
-    bulletEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(bullet.update, 0.08, false)
+    bulletEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(bullet.update, 0.08, false)
   
     -- 创建敌机AB和C的调度器 -- 
-    alienAEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(alien.updateA, 1, false)
-    alienBEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(alien.updateB, 5.5, false)
-    alienCEntry = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(alien.updateC, 9.5, false)
+    alienAEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(alien.updateA, 1, false)
+    alienBEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(alien.updateB, 3, false)
+    alienCEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(alien.updateC, 10, false)
 
+    -- 创建子弹和敌机碰撞的定时器 --
+    hitEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(hit.update, 1/math.pi, false)
 
 end
 

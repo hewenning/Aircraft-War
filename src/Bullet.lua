@@ -1,6 +1,6 @@
 transition = require "cocos.framework.transition"
 
-bullet = {}
+bullet = {Tag = 0,}
 
 bulletsObj = {}
 
@@ -13,8 +13,14 @@ function Bullet:ctor(x, y)
     self.y = y
     local creatorReader = creator.CreatorReader:createWithFilename('Resources/creator/Scene/bullet.ccreator')
     creatorReader:setup()
-    local content =  creatorReader:getSceneGraph():getChildByName("content")
+    local scene =  creatorReader:getSceneGraph()
+    local content = scene:getChildByName("content")
     content:removeFromParent(false)
+
+    -- 构造的时候把对象大小的矩形保存 --
+    local box = content:getBoundingBox()
+    self.box = box
+
     self:addChild(content)
     load.Canvas:addChild(self)
 end
@@ -47,6 +53,7 @@ function bullet.update()
     if keyboard.keyStatus[59] == 1 or keyboard.keyStatus[164] == 1 then
         local newbullet = Bullet.new(0, 0)
         newbullet:getBullet()
+        -- print(newbullet.box)
         newbullet:play()
     end
 end

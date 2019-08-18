@@ -4,7 +4,8 @@ require "keyboard"
 require "load"
 require "bullet"
 require "alien"
-
+require "hit"
+require "controller"
 hello = {hero = 1,}
 
 -- cclog信息 --
@@ -49,6 +50,9 @@ local function main()
     
     -- 传入随机种子 --
     math.randomseed(tostring(os.time()):reverse():sub(1, 6))
+
+    -- 开启碰撞系统 --
+    -- controller.Collosion()
 
     -- 运行时的时候查看节点树 --
     do
