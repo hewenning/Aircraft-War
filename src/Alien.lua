@@ -1,4 +1,4 @@
-alien = {}
+alien = {enemy= {},Tag = 0,}
 
 alien.alienAPath = 'Resources/creator/Scene/alienA.ccreator'
 alien.alienBPath = 'Resources/creator/Scene/alienB.ccreator'
@@ -12,17 +12,33 @@ Alien = class("Alien", function()
 end)
 
 function Alien:ctor(path, name, life, score, level)
-	self.life = life
+    self.name = name
+    self.life = life
 	self.score = score
     self.level = level
     local creatorReader = creator.CreatorReader:createWithFilename(path)
     creatorReader:setup()
-    local alienA = creatorReader:getSceneGraph():getChildByName(name)
+    local scene = creatorReader:getSceneGraph()
+    local alienA = scene:getChildByName(name)
     alienA:removeFromParent(false)
+    
+    -- 构造的时候把对象大小的矩形保存 --
+    local box = alienA:getBoundingBox()
+    self.box = box
+
     self:addChild(alienA)
     load.Canvas:addChild(self)
 end
  
+function Alien:test()
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+end
+
+function Alien:getBox()
+    -- 获取对象大小的矩形 --
+    print(self.box) 
+end
+
 function Alien:play()
     -- 缩放动画 --
     -- self:runAction(cc.Sequence:create(cc.ScaleTo:create(0, 0.1, 0.1), cc.ScaleTo:create(0.5, 1, 1)))
@@ -83,8 +99,9 @@ function alien.updateA()
     print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     local alienA = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
     alienA:randomPosition()
+    --alienA:getBox()
     alienA:getAlien()
-    alienA:play() 
+    table.insert(alien.enemy, alienA)
 end
 
 function alien.updateB()
@@ -97,7 +114,7 @@ function alien.updateB()
     local alienB = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
     alienB:randomPosition()
     alienB:getAlien()
-    alienB:play() 
+    table.insert(alien.enemy, alienB) 
 end
 
 function alien.updateC()
@@ -110,7 +127,7 @@ function alien.updateC()
     local alienC = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
     alienC:randomPosition()
     alienC:getAlien()
-    alienC:play() 
+    table.insert(alien.enemy, alienC)
 end
 
 return alien
