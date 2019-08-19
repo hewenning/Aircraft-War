@@ -1,4 +1,4 @@
-alien = {enemy= {},Tag = 0,}
+alien = {set = {},Tag = 0, i = 0,}
 
 alien.alienAPath = 'Resources/creator/Scene/alienA.ccreator'
 alien.alienBPath = 'Resources/creator/Scene/alienB.ccreator'
@@ -21,22 +21,41 @@ function Alien:ctor(path, name, life, score, level)
     local scene = creatorReader:getSceneGraph()
     local alienA = scene:getChildByName(name)
     alienA:removeFromParent(false)
-    
-    -- 构造的时候把对象大小的矩形保存 --
-    local box = alienA:getBoundingBox()
-    self.box = box
-
     self:addChild(alienA)
     load.Canvas:addChild(self)
+
+    -- 构造的时候把对象大小的矩形保存 --
+    local box = self:getChildByName(name):getParent():getBoundingBox()
+    self.box = box
 end
- 
-function Alien:test()
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+
+function Alien:refreshBox()
+    if self.name == alien.A then
+        local box = self:getChildByName(self.name):getParent():getBoundingBox()
+        box.width = 51
+        box.height = 38
+        self.box = box
+    end
+
+    if self.name == alien.B then
+        local box = self:getChildByName(self.name):getParent():getBoundingBox()
+        box.width = 69
+        box.height = 88
+        self.box = box
+    end
+
+    if self.name == alien.C then
+        local box = self:getChildByName(self.name):getParent():getBoundingBox()
+        box.width = 165
+        box.height = 246
+        self.box = box
+    end
 end
 
 function Alien:getBox()
     -- 获取对象大小的矩形 --
-    print(self.box) 
+    -- return self.box
+    return self.box
 end
 
 function Alien:play()
@@ -47,15 +66,18 @@ end
 function Alien:getAlien()
     self:setAnchorPoint(0.5, 0) 
     self:setPosition(self.x, self.y)
+end
+
+function Alien:play()
     local action = transition.sequence( 
         {
             --cc.MoveBy:create(1, cc.p(0, -200)),
             --cc.MoveBy:create(3, cc.p(0, 0)),
             cc.MoveBy:create(6, cc.p(0, -1200)), 
-            cc.CallFunc:create( function()
-                self:removeFromParent()
-                print("The alien has been cleared.")
-            end ),          
+            -- cc.CallFunc:create( function()
+            --     self:removeFromParent()
+            --     print("The alien has been cleared.")
+            -- end ),          
         }
     )
     self:runAction(action)
@@ -85,9 +107,11 @@ function Alien:getScore()
 end
 
 function Alien:destroy()
-    if self.life <= 0 then
-       self:removeFromParent() 
-    end
+    -- if self.life <= 0 then
+    --    self:removeFromParent() 
+    -- end
+    self:removeFromParent()
+    print("The alien has been cleared.")
 end
 
 function alien.updateA()
@@ -96,38 +120,119 @@ function alien.updateA()
     -- alien = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
     -- alien:getAlien(300, 200) 
     -- print(">>>>>>>>")
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    local alienA = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
-    alienA:randomPosition()
-    --alienA:getBox()
-    alienA:getAlien()
-    table.insert(alien.enemy, alienA)
+    -- print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    -- local alienA = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
+    -- alienA:randomPosition()
+    -- --alienA:getBox()
+    -- alienA:getAlien()
+    -- table.insert(alien.enemy, alienA)
+    -- 不断的把敌机存入新的Table里面 --
+    if alien.Tag <= 20 then
+        alien.set[alien.Tag] = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
+        alien.set[alien.Tag]:randomPosition()
+        alien.set[alien.Tag]:getAlien()
+        alien.set[alien.Tag]:play()
+        alien.Tag = alien.Tag + 1
+    elseif alien.Tag == 21 then
+        if alien.i < 20 then
+            if alien.set[alien.i] ~= nil then
+                alien.set[alien.i]:destroy()
+                alien.set[alien.i] = nil
+            end
+            alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
+            alien.set[alien.i]:randomPosition()
+            alien.set[alien.i]:getAlien()
+            alien.set[alien.i]:play()
+            alien.i = alien.i + 1
+        elseif alien.i == 20  then
+            if alien.set[alien.i] ~= nil then
+                alien.set[alien.i]:destroy()
+                alien.set[alien.i] = nil
+            end
+            alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
+            alien.set[alien.i]:randomPosition()
+            alien.set[alien.i]:getAlien()
+            alien.set[alien.i]:play()
+            alien.i = 1
+        end
+    end
+
 end
 
 function alien.updateB()
-    -- 测试能否正常获取敌机 --
-    -- print(">>>>>>>>")
-    -- alien = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
-    -- alien:getAlien(300, 200) 
-    -- print(">>>>>>>>")
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    local alienB = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
-    alienB:randomPosition()
-    alienB:getAlien()
-    table.insert(alien.enemy, alienB) 
+    -- print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    -- local alienB = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
+    -- alienB:randomPosition()
+    -- alienB:getAlien()
+    -- table.insert(alien.enemy, alienB) 
+    if alien.Tag <= 20 then
+        alien.set[alien.Tag] = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
+        alien.set[alien.Tag]:randomPosition()
+        alien.set[alien.Tag]:getAlien()
+        alien.set[alien.Tag]:play()
+        alien.Tag = alien.Tag + 1
+    elseif alien.Tag == 21 then
+        if alien.i < 20 then
+            if alien.set[alien.i] ~= nil then
+                alien.set[alien.i]:destroy()
+                alien.set[alien.i] = nil
+            end
+            alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
+            alien.set[alien.i]:randomPosition()
+            alien.set[alien.i]:getAlien()
+            alien.set[alien.i]:play()
+            alien.i = alien.i + 1
+        elseif alien.i == 20  then
+            if alien.set[alien.i] ~= nil then
+                alien.set[alien.i]:destroy()
+                alien.set[alien.i] = nil
+            end
+            alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
+            alien.set[alien.i]:randomPosition()
+            alien.set[alien.i]:getAlien()
+            alien.set[alien.i]:play()
+            alien.i = 1
+        end
+
+    end
 end
 
 function alien.updateC()
-    -- 测试能否正常获取敌机 --
-    -- print(">>>>>>>>")
-    -- alien = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
-    -- alien:getAlien(300, 200) 
-    -- print(">>>>>>>>")
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    local alienC = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
-    alienC:randomPosition()
-    alienC:getAlien()
-    table.insert(alien.enemy, alienC)
+    -- print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    -- local alienC = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
+    -- alienC:randomPosition()
+    -- alienC:getAlien()
+    -- table.insert(alien.enemy, alienC)
+    if alien.Tag <= 0 then
+        alien.set[alien.Tag] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
+        alien.set[alien.Tag]:randomPosition()
+        alien.set[alien.Tag]:getAlien()
+        -- alien.set[alien.Tag]:play()
+        alien.Tag = alien.Tag + 1
+    elseif alien.Tag == 21 then
+        if alien.i < 20 then
+            if alien.set[alien.i] ~= nil then
+                alien.set[alien.i]:destroy()
+                alien.set[alien.i] = nil
+            end
+            alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
+            alien.set[alien.i]:randomPosition()
+            alien.set[alien.i]:getAlien()
+            alien.set[alien.i]:play()
+            alien.i = alien.i + 1
+        elseif alien.i == 20  then
+            if alien.set[alien.i] ~= nil then
+                alien.set[alien.i]:destroy()
+                alien.set[alien.i] = nil
+            end
+            alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
+            alien.set[alien.i]:randomPosition()
+            alien.set[alien.i]:getAlien()
+            alien.set[alien.i]:play()
+            alien.i = 1
+        end
+
+    end
 end
 
 return alien
