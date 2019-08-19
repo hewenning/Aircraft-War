@@ -108,21 +108,21 @@ function alien.updateA()
     -- alienA:getAlien()
     -- table.insert(alien.enemy, alienA)
     -- 不断的把敌机存入新的Table里面 --
-    if alien.Tag <= 4 then
+    if alien.Tag <= 20 then
         alien.set[alien.Tag] = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
         alien.set[alien.Tag]:randomPosition()
         alien.set[alien.Tag]:getAlien()
         alien.set[alien.Tag]:play()
         alien.Tag = alien.Tag + 1
-    elseif alien.Tag == 5 then
-        if alien.i < 4 then
+    elseif alien.Tag == 21 then
+        if alien.i < 20 then
             alien.set[alien.i]:destroy()
             alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
             alien.i = alien.i + 1
-        elseif alien.i == 4  then
+        elseif alien.i == 20  then
             alien.set[alien.i]:destroy()
             alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
             alien.set[alien.i]:randomPosition()
@@ -140,21 +140,21 @@ function alien.updateB()
     -- alienB:randomPosition()
     -- alienB:getAlien()
     -- table.insert(alien.enemy, alienB) 
-    if alien.Tag <= 4 then
+    if alien.Tag <= 20 then
         alien.set[alien.Tag] = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
         alien.set[alien.Tag]:randomPosition()
         alien.set[alien.Tag]:getAlien()
         alien.set[alien.Tag]:play()
         alien.Tag = alien.Tag + 1
-    elseif alien.Tag == 5 then
-        if alien.i < 4 then
+    elseif alien.Tag == 21 then
+        if alien.i < 20 then
             alien.set[alien.i]:destroy()
             alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
             alien.i = alien.i + 1
-        elseif alien.i == 4  then
+        elseif alien.i == 20  then
             alien.set[alien.i]:destroy()
             alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
             alien.set[alien.i]:randomPosition()
@@ -172,21 +172,21 @@ function alien.updateC()
     -- alienC:randomPosition()
     -- alienC:getAlien()
     -- table.insert(alien.enemy, alienC)
-    if alien.Tag <= 4 then
+    if alien.Tag <= 20 then
         alien.set[alien.Tag] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
         alien.set[alien.Tag]:randomPosition()
         alien.set[alien.Tag]:getAlien()
         alien.set[alien.Tag]:play()
         alien.Tag = alien.Tag + 1
-    elseif alien.Tag == 5 then
-        if alien.i < 4 then
+    elseif alien.Tag == 21 then
+        if alien.i < 20 then
             alien.set[alien.i]:destroy()
             alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
             alien.i = alien.i + 1
-        elseif alien.i == 4  then
+        elseif alien.i == 20  then
             alien.set[alien.i]:destroy()
             alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
             alien.set[alien.i]:randomPosition()
