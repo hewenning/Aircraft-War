@@ -22,21 +22,20 @@ function Alien:ctor(path, name, life, score, level)
     local alienA = scene:getChildByName(name)
     alienA:removeFromParent(false)
     
-    -- 构造的时候把对象大小的矩形保存 --
-    local box = alienA:getBoundingBox()
-    self.box = box
+
 
     self:addChild(alienA)
     load.Canvas:addChild(self)
+    -- 构造的时候把对象大小的矩形保存 --
+    local box = self:getChildByName(name):getBoundingBox()
+    self.box = box
 end
  
-function Alien:test()
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-end
 
 function Alien:getBox()
     -- 获取对象大小的矩形 --
-    print(self.box) 
+    -- return self.box
+    return self.box
 end
 
 function Alien:play()
@@ -116,14 +115,20 @@ function alien.updateA()
         alien.Tag = alien.Tag + 1
     elseif alien.Tag == 21 then
         if alien.i < 20 then
-            alien.set[alien.i]:destroy()
+            if alien.set[alien.i] ~= nil then
+                alien.set[alien.i]:destroy()
+                alien.set[alien.i] = nil
+            end
             alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
             alien.i = alien.i + 1
         elseif alien.i == 20  then
-            alien.set[alien.i]:destroy()
+            if alien.set[alien.i] ~= nil then
+                alien.set[alien.i]:destroy()
+                alien.set[alien.i] = nil
+            end
             alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
@@ -148,14 +153,20 @@ function alien.updateB()
         alien.Tag = alien.Tag + 1
     elseif alien.Tag == 21 then
         if alien.i < 20 then
-            alien.set[alien.i]:destroy()
+            if alien.set[alien.i] ~= nil then
+                alien.set[alien.i]:destroy()
+                alien.set[alien.i] = nil
+            end
             alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
             alien.i = alien.i + 1
         elseif alien.i == 20  then
-            alien.set[alien.i]:destroy()
+            if alien.set[alien.i] ~= nil then
+                alien.set[alien.i]:destroy()
+                alien.set[alien.i] = nil
+            end
             alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
@@ -172,22 +183,28 @@ function alien.updateC()
     -- alienC:randomPosition()
     -- alienC:getAlien()
     -- table.insert(alien.enemy, alienC)
-    if alien.Tag <= 20 then
+    if alien.Tag <= 0 then
         alien.set[alien.Tag] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
         alien.set[alien.Tag]:randomPosition()
         alien.set[alien.Tag]:getAlien()
-        alien.set[alien.Tag]:play()
+        -- alien.set[alien.Tag]:play()
         alien.Tag = alien.Tag + 1
     elseif alien.Tag == 21 then
         if alien.i < 20 then
-            alien.set[alien.i]:destroy()
+            if alien.set[alien.i] ~= nil then
+                alien.set[alien.i]:destroy()
+                alien.set[alien.i] = nil
+            end
             alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
             alien.i = alien.i + 1
         elseif alien.i == 20  then
-            alien.set[alien.i]:destroy()
+            if alien.set[alien.i] ~= nil then
+                alien.set[alien.i]:destroy()
+                alien.set[alien.i] = nil
+            end
             alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
