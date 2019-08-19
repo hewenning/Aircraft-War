@@ -21,16 +21,36 @@ function Alien:ctor(path, name, life, score, level)
     local scene = creatorReader:getSceneGraph()
     local alienA = scene:getChildByName(name)
     alienA:removeFromParent(false)
-    
-
-
     self:addChild(alienA)
     load.Canvas:addChild(self)
+
     -- 构造的时候把对象大小的矩形保存 --
-    local box = self:getChildByName(name):getBoundingBox()
+    local box = self:getChildByName(name):getParent():getBoundingBox()
     self.box = box
 end
- 
+
+function Alien:refreshBox()
+    if self.name == alien.A then
+        local box = self:getChildByName(self.name):getParent():getBoundingBox()
+        box.width = 51
+        box.height = 38
+        self.box = box
+    end
+
+    if self.name == alien.B then
+        local box = self:getChildByName(self.name):getParent():getBoundingBox()
+        box.width = 69
+        box.height = 88
+        self.box = box
+    end
+
+    if self.name == alien.C then
+        local box = self:getChildByName(self.name):getParent():getBoundingBox()
+        box.width = 165
+        box.height = 246
+        self.box = box
+    end
+end
 
 function Alien:getBox()
     -- 获取对象大小的矩形 --

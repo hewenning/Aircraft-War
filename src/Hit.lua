@@ -7,15 +7,15 @@ function hit.update()
             -- if alienObj ~= nil then
                 for indexBullet, bulletObj in pairs(bullet.set) do 
                     -- if bulletObj ~= nil then
-                        -- local bullet = bulletObj:getChildByName("bullet")
-                        -- local bullet = bulletObj:getChildByName("bullet")
+                        alienObj:refreshBox()
+                        bulletObj:refreshBox()
                         -- print("hero:getBox():" ,load.hero:getBoundingBox().x ,load.hero:getBoundingBox().y ,load.hero:getBoundingBox().width ,load.hero:getBoundingBox().height)
-                        print("alienObj:getBox():" ,alienObj:getBox().x ,alienObj:getBox().y ,alienObj:getBox().width ,alienObj:getBox().height)
-                        print("bulletObj:getBox():" ,bulletObj:getBox().x ,bulletObj:getBox().y ,bulletObj:getBox().width ,bulletObj:getBox().height)
+                        -- print("alienObj:getBox():" ,alienObj:getBox().x ,alienObj:getBox().y ,alienObj:getBox().width ,alienObj:getBox().height)
+                        -- print("bulletObj:getBox():" ,bulletObj:getBox().x ,bulletObj:getBox().y ,bulletObj:getBox().width ,bulletObj:getBox().height)
                         if cc.rectIntersectsRect(alienObj:getBox(), bulletObj:getBox()) then
-                            -- print("----------------------------------")
-                            -- print("The rectangles have intersected.")
-                            -- print("----------------------------------")
+                            print("----------------------------------")
+                            print("The rectangles have intersected.")
+                            print("----------------------------------")
                             -- 相交之后子弹对象和飞机清空节点，并且将对应位置设置为空值 --
                             alienObj:destroy()
                             bulletObj:destroy()

@@ -24,7 +24,17 @@ function Bullet:ctor(x, y)
     load.Canvas:addChild(self)
 
     -- 构造的时候把对象大小的矩形保存 --
-    local box = self:getChildByName("bullet"):getBoundingBox()
+    local box = self:getChildByName("bullet"):getParent():getBoundingBox()
+    self.box = box
+end
+
+function Bullet:refreshBox()
+    local box = self:getChildByName("bullet"):getParent():getBoundingBox()
+    -- local box = {}
+    box.width = 9
+    box.height = 21
+    -- box.x = self:getPositionX()
+    -- box.y = self:getPositionY()
     self.box = box
 end
 
