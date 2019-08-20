@@ -33,8 +33,8 @@ function Bullet:refreshBox()
     -- local box = {}
     box.width = 9
     box.height = 21
-    -- box.x = self:getPositionX()
-    -- box.y = self:getPositionY()
+    box.x = self:getPositionX()
+    box.y = self:getPositionY()
     self.box = box
 end
 
