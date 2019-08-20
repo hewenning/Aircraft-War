@@ -8,7 +8,7 @@ alien.B = 'alienB'
 alien.C = 'alienC'
 
 Alien = class("Alien", function()
-    return cc.Node:create()
+    return cc.Sprite:create()
 end)
 
 function Alien:ctor(path, name, life, score, level)
@@ -24,8 +24,6 @@ function Alien:ctor(path, name, life, score, level)
     self:addChild(alienA)
     load.Canvas:addChild(self)
 
-    -- 构造的时候把对象大小的矩形保存 --
-    -- local box = self:getChildByName(name):getParent():getBoundingBox()
     local box = self:getBoundingBox()
     self.box = box
 end
@@ -54,15 +52,9 @@ function Alien:refreshBox()
 end
 
 function Alien:getBox()
-    -- 获取对象大小的矩形 --
-    -- return self.box
     return self.box
 end
 
-function Alien:play()
-    -- 缩放动画 --
-    -- self:runAction(cc.Sequence:create(cc.ScaleTo:create(0, 0.1, 0.1), cc.ScaleTo:create(0.5, 1, 1)))
-end
 
 function Alien:getAlien()
     self:setAnchorPoint(0.5, 0.5) 
@@ -70,18 +62,29 @@ function Alien:getAlien()
 end
 
 function Alien:play()
-    local action = transition.sequence( 
-        {
-            --cc.MoveBy:create(1, cc.p(0, -200)),
-            --cc.MoveBy:create(3, cc.p(0, 0)),
-            cc.MoveBy:create(6, cc.p(0, -1200)), 
-            -- cc.CallFunc:create( function()
-            --     self:removeFromParent()
-            --     print("The alien has been cleared.")
-            -- end ),          
-        }
-    )
-    self:runAction(action)
+    if self.name == alien.A then
+        local action = cc.Sequence:create( 
+            {
+                cc.MoveBy:create(6, cc.p(0, -1200)),         
+            }
+        )
+        self:runAction(action)
+    elseif self.name == alien.B then
+        local action = cc.Sequence:create( 
+            {
+                cc.MoveBy:create(6, cc.p(0, -1200)),        
+            }
+        )
+        self:runAction(action)
+    elseif self.name == alien.C then
+        local action = cc.Sequence:create( 
+            {
+                cc.MoveBy:create(6, cc.p(0, -1200)),
+            }
+        )
+        self:runAction(action)
+    end
+
 end
 
 function Alien:randomPosition()
@@ -111,8 +114,82 @@ function Alien:destroy()
     -- if self.life <= 0 then
     --    self:removeFromParent() 
     -- end
-    self:removeFromParent()
-    print("The alien has been cleared.")
+    if self.name == alien.A then
+        
+        -- 爆炸动画 --
+        local animationA = cc.Animation:create()
+        local nameA 
+        for i = 1, 5 do
+            nameA = "alienA/alienA"..i..".png"
+            animationA:addSpriteFrameWithFile(nameA)
+        end
+        -- Should last 1 second. And there are 5 frames.
+        animationA:setDelayPerUnit(0.5 / 5.0)
+        animationA:setRestoreOriginalFrame(true)
+        local actionA = cc.Animate:create(animationA) 
+        -- local spriteA = self:getChildByName("alienA")
+
+        local action_1 = cc.Sequence:create( 
+            {   
+                actionA,
+                cc.CallFunc:create( function()
+                    self:removeFromParent()
+                    print("The alienA has been cleared.")
+                end ),          
+            }
+        )
+        self:getChildByName("alienA"):runAction(action_1)
+
+    elseif self.name == alien.B then
+        -- 爆炸动画 --
+        local animationB = cc.Animation:create()
+        local nameB
+        for i = 1, 5 do
+            nameB = "alienB/alienB"..i..".png"
+            animationB:addSpriteFrameWithFile(nameB)
+        end
+        -- Should last 1 second. And there are 5 frames.
+        animationB:setDelayPerUnit(0.8 / 5.0)
+        animationB:setRestoreOriginalFrame(true)
+        local actionB = cc.Animate:create(animationB) 
+        -- local spriteA = self:getChildByName("alienA")
+
+        local action_2 = cc.Sequence:create( 
+            {   
+                actionB,
+                cc.CallFunc:create( function()
+                    self:removeFromParent()
+                    print("The alienB has been cleared.")
+                end ),          
+            }
+        )
+        self:getChildByName("alienB"):runAction(action_2)
+    elseif self.name == alien.C then
+        -- 爆炸动画 --
+        local animationC = cc.Animation:create()
+        local nameC
+        for i = 1, 7 do
+            nameC = "alienC/alienC"..i..".png"
+            animationC:addSpriteFrameWithFile(nameC)
+        end
+        -- Should last 1 second. And there are 5 frames.
+        animationC:setDelayPerUnit(1.0 / 5.0)
+        animationC:setRestoreOriginalFrame(true)
+        local actionC = cc.Animate:create(animationC) 
+        -- local spriteA = self:getChildByName("alienA")
+
+        local action_3 = cc.Sequence:create( 
+            {   
+                actionC,
+                cc.CallFunc:create( function()
+                    self:removeFromParent()
+                    print("The alienC has been cleared.")
+                end ),          
+            }
+        )
+        self:getChildByName("alienC"):runAction(action_3)
+
+    end
 end
 
 function alien.updateA()

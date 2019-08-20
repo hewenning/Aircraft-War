@@ -23,7 +23,7 @@ function schedule.setup()
     -- 创建敌机AB和C的调度器 -- 
     alienAEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(alien.updateA, 1, false)
     alienBEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(alien.updateB, 3, false)
-    alienCEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(alien.updateC, 0.5, false)
+    alienCEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(alien.updateC, 10, false)
 
     -- 创建子弹和敌机碰撞的定时器 --
     hitEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(hit.update, 1/60, false)
