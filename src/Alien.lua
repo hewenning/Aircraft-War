@@ -11,9 +11,9 @@ Alien = class("Alien", function()
     return cc.Sprite:create()
 end)
 
-function Alien:ctor(path, name, life, score)
+function Alien:ctor(path, name, hp, score)
     self.name = name
-    self.life = life
+    self.life = hp
 	self.score = score
     local creatorReader = creator.CreatorReader:createWithFilename(path)
     creatorReader:setup()
@@ -97,8 +97,8 @@ function Alien:randomPosition()
     self.y = y
 end
 
-function Alien:getLife()
-	return self.life
+function Alien:getHP()
+	return self.hp
 end
  
 function Alien:getScore()
