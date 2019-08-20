@@ -6,7 +6,7 @@ require "bullet"
 require "alien"
 require "hit"
 require "controller"
-hello = {hero = 1,}
+require "score"
 
 -- cclog–≈œ¢ --
 cclog = function(...)

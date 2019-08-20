@@ -11,11 +11,10 @@ Alien = class("Alien", function()
     return cc.Sprite:create()
 end)
 
-function Alien:ctor(path, name, life, score, level)
+function Alien:ctor(path, name, life, score)
     self.name = name
     self.life = life
 	self.score = score
-    self.level = level
     local creatorReader = creator.CreatorReader:createWithFilename(path)
     creatorReader:setup()
     local scene = creatorReader:getSceneGraph()
@@ -100,10 +99,6 @@ end
 
 function Alien:getLife()
 	return self.life
-end
- 
-function Alien:getLevel()
-	return self.level
 end
  
 function Alien:getScore()
@@ -206,7 +201,7 @@ function alien.updateA()
     -- table.insert(alien.enemy, alienA)
     -- 不断的把敌机存入新的Table里面 --
     if alien.Tag <= 20 then
-        alien.set[alien.Tag] = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
+        alien.set[alien.Tag] = Alien.new(alien.alienAPath, alien.A, 0, 5)
         alien.set[alien.Tag]:randomPosition()
         alien.set[alien.Tag]:getAlien()
         alien.set[alien.Tag]:play()
@@ -217,7 +212,7 @@ function alien.updateA()
                 alien.set[alien.i]:destroy()
                 alien.set[alien.i] = nil
             end
-            alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
+            alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 0, 5)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
@@ -227,7 +222,7 @@ function alien.updateA()
                 alien.set[alien.i]:destroy()
                 alien.set[alien.i] = nil
             end
-            alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
+            alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 0, 5)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
@@ -244,7 +239,7 @@ function alien.updateB()
     -- alienB:getAlien()
     -- table.insert(alien.enemy, alienB) 
     if alien.Tag <= 20 then
-        alien.set[alien.Tag] = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
+        alien.set[alien.Tag] = Alien.new(alien.alienBPath, alien.B, 0, 15)
         alien.set[alien.Tag]:randomPosition()
         alien.set[alien.Tag]:getAlien()
         alien.set[alien.Tag]:play()
@@ -255,7 +250,7 @@ function alien.updateB()
                 alien.set[alien.i]:destroy()
                 alien.set[alien.i] = nil
             end
-            alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
+            alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 0, 15)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
@@ -265,7 +260,7 @@ function alien.updateB()
                 alien.set[alien.i]:destroy()
                 alien.set[alien.i] = nil
             end
-            alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 0, 0, 0)
+            alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 0, 15)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
@@ -282,7 +277,7 @@ function alien.updateC()
     -- alienC:getAlien()
     -- table.insert(alien.enemy, alienC)
     if alien.Tag <= 20 then
-        alien.set[alien.Tag] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
+        alien.set[alien.Tag] = Alien.new(alien.alienCPath, alien.C, 0, 50)
         alien.set[alien.Tag]:randomPosition()
         alien.set[alien.Tag]:getAlien()
         -- alien.set[alien.Tag]:play()
@@ -293,7 +288,7 @@ function alien.updateC()
                 alien.set[alien.i]:destroy()
                 alien.set[alien.i] = nil
             end
-            alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
+            alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 0, 50)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
@@ -303,7 +298,7 @@ function alien.updateC()
                 alien.set[alien.i]:destroy()
                 alien.set[alien.i] = nil
             end
-            alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
+            alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 0, 50)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
