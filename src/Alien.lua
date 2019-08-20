@@ -25,27 +25,28 @@ function Alien:ctor(path, name, life, score, level)
     load.Canvas:addChild(self)
 
     -- 构造的时候把对象大小的矩形保存 --
-    local box = self:getChildByName(name):getParent():getBoundingBox()
+    -- local box = self:getChildByName(name):getParent():getBoundingBox()
+    local box = self:getBoundingBox()
     self.box = box
 end
 
 function Alien:refreshBox()
     if self.name == alien.A then
-        local box = self:getChildByName(self.name):getParent():getBoundingBox()
+        local box = self:getBoundingBox()
         box.width = 51
         box.height = 38
         self.box = box
     end
 
     if self.name == alien.B then
-        local box = self:getChildByName(self.name):getParent():getBoundingBox()
+        local box = self:getBoundingBox()
         box.width = 69
         box.height = 88
         self.box = box
     end
 
     if self.name == alien.C then
-        local box = self:getChildByName(self.name):getParent():getBoundingBox()
+        local box = self:getBoundingBox()
         box.width = 165
         box.height = 246
         self.box = box
@@ -64,7 +65,7 @@ function Alien:play()
 end
 
 function Alien:getAlien()
-    self:setAnchorPoint(0.5, 0) 
+    self:setAnchorPoint(0.5, 0.5) 
     self:setPosition(self.x, self.y)
 end
 
@@ -203,7 +204,7 @@ function alien.updateC()
     -- alienC:randomPosition()
     -- alienC:getAlien()
     -- table.insert(alien.enemy, alienC)
-    if alien.Tag <= 0 then
+    if alien.Tag <= 20 then
         alien.set[alien.Tag] = Alien.new(alien.alienCPath, alien.C, 0, 0, 0)
         alien.set[alien.Tag]:randomPosition()
         alien.set[alien.Tag]:getAlien()

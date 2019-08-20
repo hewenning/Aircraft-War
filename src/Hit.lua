@@ -1,7 +1,7 @@
 hit = {}
 
 function hit.update()
-    print("hit >>>>>>>>>>>>>>>>>>")
+    -- print("hit >>>>>>>>>>>>>>>>>>")
     -- if table.getn(alien.set) ~= 0 and table.getn(bullet.set) ~= 0 then
         for indexAlien, alienObj in pairs(alien.set) do
             -- if alienObj ~= nil then
