@@ -17,6 +17,7 @@ function hit.update()
                             print("The rectangles have intersected.")
                             print("----------------------------------")
                             -- 相交之后子弹对象和飞机清空节点，并且将对应位置设置为空值 --
+                            -- alienObj:boom()
                             alienObj:destroy()
                             bulletObj:destroy()
                             alien.set[indexAlien] = nil

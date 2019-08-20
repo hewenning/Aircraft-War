@@ -24,6 +24,10 @@ function Alien:ctor(path, name, life, score, level)
     self:addChild(alienA)
     load.Canvas:addChild(self)
 
+    -- local animMgr = creatorReader:getAnimationManager()
+    -- self.animMgr = animMgr
+    -- self.animMgr:playAnimationClip(alienA ,"alienAboom")
+
     -- 构造的时候把对象大小的矩形保存 --
     -- local box = self:getChildByName(name):getParent():getBoundingBox()
     local box = self:getBoundingBox()
@@ -70,18 +74,50 @@ function Alien:getAlien()
 end
 
 function Alien:play()
-    local action = transition.sequence( 
-        {
-            --cc.MoveBy:create(1, cc.p(0, -200)),
-            --cc.MoveBy:create(3, cc.p(0, 0)),
-            cc.MoveBy:create(6, cc.p(0, -1200)), 
-            -- cc.CallFunc:create( function()
-            --     self:removeFromParent()
-            --     print("The alien has been cleared.")
-            -- end ),          
-        }
-    )
-    self:runAction(action)
+    if self.name == alien.A then
+        local action = cc.Sequence:create( 
+            {
+                --cc.MoveBy:create(1, cc.p(0, -200)),
+                --cc.MoveBy:create(3, cc.p(0, 0)),
+                cc.MoveBy:create(6, cc.p(0, -1200)),
+                -- cc.Animation:addSpriteFrameWithFile("alienAboom"), 
+                -- cc.CallFunc:create( function()
+                --     self:removeFromParent()
+                --     print("The alien has been cleared.")
+                -- end ),          
+            }
+        )
+        self:runAction(action)
+    elseif self.name == alien.B then
+        local action = cc.Sequence:create( 
+            {
+                --cc.MoveBy:create(1, cc.p(0, -200)),
+                --cc.MoveBy:create(3, cc.p(0, 0)),
+                cc.MoveBy:create(6, cc.p(0, -1200)),
+                -- cc.Animation:addSpriteFrameWithFile("alienAboom"), 
+                -- cc.CallFunc:create( function()
+                --     self:removeFromParent()
+                --     print("The alien has been cleared.")
+                -- end ),          
+            }
+        )
+        self:runAction(action)
+    else
+        local action = cc.Sequence:create( 
+            {
+                --cc.MoveBy:create(1, cc.p(0, -200)),
+                --cc.MoveBy:create(3, cc.p(0, 0)),
+                cc.MoveBy:create(6, cc.p(0, -1200)),
+                -- cc.Animation:addSpriteFrameWithFile("alienAboom"), 
+                -- cc.CallFunc:create( function()
+                --     self:removeFromParent()
+                --     print("The alien has been cleared.")
+                -- end ),          
+            }
+        )
+        self:runAction(action)
+    end
+
 end
 
 function Alien:randomPosition()
@@ -111,8 +147,39 @@ function Alien:destroy()
     -- if self.life <= 0 then
     --    self:removeFromParent() 
     -- end
-    self:removeFromParent()
-    print("The alien has been cleared.")
+    if self.name == alien.A then
+        
+        -- 爆炸动画 --
+        local animationA = cc.Animation:create()
+        local name
+        for i = 1, 5 do
+            name = "alienA/alienA"..i..".png"
+            animationA:addSpriteFrameWithFile(name)
+        end
+        -- Should last 1 second. And there are 5 frames.
+        animationA:setDelayPerUnit(0.1 / 5.0)
+        animationA:setRestoreOriginalFrame(false)
+        --local actionA = 
+
+        local action = cc.Sequence:create( 
+            {
+                cc.Animate:create(animationA), 
+                cc.CallFunc:create( function()
+                    self:removeFromParent()
+                    print("The alienA has been cleared.")
+                end ),          
+            }
+        )
+        self:runAction(action)
+
+    elseif self.name == alien.B then
+        self:removeFromParent()
+        print("The alienB has been cleared.")
+    else
+        self:removeFromParent()
+        print("The alienC has been cleared.")
+    end
+
 end
 
 function alien.updateA()
