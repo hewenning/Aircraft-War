@@ -8,6 +8,8 @@ require "hit"
 require "controller"
 require "score"
 require "hero"
+require "controller"
+require "gameover"
 
 -- cclog–≈œ¢ --
 cclog = function(...)
