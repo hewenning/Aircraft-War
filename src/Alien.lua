@@ -11,9 +11,11 @@ Alien = class("Alien", function()
     return cc.Sprite:create()
 end)
 
+
+-- 此处的分数为单次击打的分数，从分数为hp*score --
 function Alien:ctor(path, name, hp, score)
     self.name = name
-    self.life = hp
+    self.hp = hp
 	self.score = score
     local creatorReader = creator.CreatorReader:createWithFilename(path)
     creatorReader:setup()
@@ -106,83 +108,115 @@ function Alien:getScore()
 end
 
 function Alien:destroy()
-    -- if self.life <= 0 then
-    --    self:removeFromParent() 
-    -- end
+
+    -- 如果是A飞机，没有血量就销毁 --
     if self.name == alien.A then
-        
-        -- 爆炸动画 --
-        local animationA = cc.Animation:create()
-        local nameA 
-        for i = 1, 5 do
-            nameA = "alienA/alienA"..i..".png"
-            animationA:addSpriteFrameWithFile(nameA)
+        self.hp = self.hp - 1
+        if self.hp == 0 then
+            -- 爆炸动画 --
+            local animationA = cc.Animation:create()
+            local nameA 
+            for i = 1, 5 do
+                nameA = "alienA/alienA"..i..".png"
+                animationA:addSpriteFrameWithFile(nameA)
+            end
+            -- Should last 1 second. And there are 5 frames.
+            animationA:setDelayPerUnit(0.5 / 5.0)
+            animationA:setRestoreOriginalFrame(true)
+            local actionA = cc.Animate:create(animationA) 
+            -- local spriteA = self:getChildByName("alienA")
+
+            local action_1 = cc.Sequence:create( 
+                {   
+                    actionA,
+                    cc.CallFunc:create( function()
+                        self:removeFromParent()
+                        print("The alienA has been cleared.")
+                    end ),          
+                }
+            )
+            self:getChildByName("alienA"):runAction(action_1)
         end
-        -- Should last 1 second. And there are 5 frames.
-        animationA:setDelayPerUnit(0.5 / 5.0)
-        animationA:setRestoreOriginalFrame(true)
-        local actionA = cc.Animate:create(animationA) 
-        -- local spriteA = self:getChildByName("alienA")
 
-        local action_1 = cc.Sequence:create( 
-            {   
-                actionA,
-                cc.CallFunc:create( function()
-                    self:removeFromParent()
-                    print("The alienA has been cleared.")
-                end ),          
-            }
-        )
-        self:getChildByName("alienA"):runAction(action_1)
-
+    -- 如果是B飞机，没有血量就销毁 --
     elseif self.name == alien.B then
-        -- 爆炸动画 --
-        local animationB = cc.Animation:create()
-        local nameB
-        for i = 1, 5 do
-            nameB = "alienB/alienB"..i..".png"
-            animationB:addSpriteFrameWithFile(nameB)
-        end
+        self.hp = self.hp -1
+        
+        -- 被击打的动画 --
+        local animationBhit = cc.Animation:create()
+        local nameBhit = "alienB/alienBhit.png"
+        animationBhit:addSpriteFrameWithFile(nameBhit)
         -- Should last 1 second. And there are 5 frames.
-        animationB:setDelayPerUnit(0.8 / 5.0)
-        animationB:setRestoreOriginalFrame(true)
-        local actionB = cc.Animate:create(animationB) 
-        -- local spriteA = self:getChildByName("alienA")
+        animationBhit:setDelayPerUnit(0.2 / 1)
+        animationBhit:setRestoreOriginalFrame(true)
+        local actionBhit = cc.Animate:create(animationBhit) 
+        self:getChildByName("alienB"):runAction(actionBhit)
+        
+        if self.hp == 0 then
+            -- 爆炸动画 --
+            local animationB = cc.Animation:create()
+            local nameB
+            for i = 1, 5 do
+                nameB = "alienB/alienB"..i..".png"
+                animationB:addSpriteFrameWithFile(nameB)
+            end
+            -- Should last 1 second. And there are 5 frames.
+            animationB:setDelayPerUnit(0.8 / 5.0)
+            animationB:setRestoreOriginalFrame(true)
+            local actionB = cc.Animate:create(animationB) 
+            -- local spriteA = self:getChildByName("alienA")
 
-        local action_2 = cc.Sequence:create( 
-            {   
-                actionB,
-                cc.CallFunc:create( function()
-                    self:removeFromParent()
-                    print("The alienB has been cleared.")
-                end ),          
-            }
-        )
-        self:getChildByName("alienB"):runAction(action_2)
+            local action_2 = cc.Sequence:create( 
+                {   
+                    actionB,
+                    cc.CallFunc:create( function()
+                        self:removeFromParent()
+                        print("The alienB has been cleared.")
+                    end ),          
+                }
+            )
+            self:getChildByName("alienB"):runAction(action_2)            
+        end 
+
+    -- 如果是C飞机，没有血量就销毁 --
     elseif self.name == alien.C then
-        -- 爆炸动画 --
-        local animationC = cc.Animation:create()
-        local nameC
-        for i = 1, 7 do
-            nameC = "alienC/alienC"..i..".png"
-            animationC:addSpriteFrameWithFile(nameC)
-        end
+        self.hp = self.hp -1
+        
+        -- 被击打的动画 --
+        local animationChit = cc.Animation:create()
+        local nameChit = "alienC/alienChit.png"
+        animationChit:addSpriteFrameWithFile(nameChit)
         -- Should last 1 second. And there are 5 frames.
-        animationC:setDelayPerUnit(1.0 / 5.0)
-        animationC:setRestoreOriginalFrame(true)
-        local actionC = cc.Animate:create(animationC) 
-        -- local spriteA = self:getChildByName("alienA")
+        animationChit:setDelayPerUnit(0.2 / 1)
+        animationChit:setRestoreOriginalFrame(true)
+        local actionChit = cc.Animate:create(animationChit) 
+        self:getChildByName("alienC"):runAction(actionChit)
 
-        local action_3 = cc.Sequence:create( 
-            {   
-                actionC,
-                cc.CallFunc:create( function()
-                    self:removeFromParent()
-                    print("The alienC has been cleared.")
-                end ),          
-            }
-        )
-        self:getChildByName("alienC"):runAction(action_3)
+        if self.hp == 0 then
+            -- 爆炸动画 --
+            local animationC = cc.Animation:create()
+            local nameC
+            for i = 1, 7 do
+                nameC = "alienC/alienC"..i..".png"
+                animationC:addSpriteFrameWithFile(nameC)
+            end
+            -- Should last 1 second. And there are 5 frames.
+            animationC:setDelayPerUnit(1.0 / 5.0)
+            animationC:setRestoreOriginalFrame(true)
+            local actionC = cc.Animate:create(animationC) 
+            -- local spriteA = self:getChildByName("alienA")
+
+            local action_3 = cc.Sequence:create( 
+                {   
+                    actionC,
+                    cc.CallFunc:create( function()
+                        self:removeFromParent()
+                        print("The alienC has been cleared.")
+                    end ),          
+                }
+            )
+            self:getChildByName("alienC"):runAction(action_3)
+        end
 
     end
 end
@@ -201,7 +235,7 @@ function alien.updateA()
     -- table.insert(alien.enemy, alienA)
     -- 不断的把敌机存入新的Table里面 --
     if alien.Tag <= 20 then
-        alien.set[alien.Tag] = Alien.new(alien.alienAPath, alien.A, 0, 5)
+        alien.set[alien.Tag] = Alien.new(alien.alienAPath, alien.A, 1, 5)
         alien.set[alien.Tag]:randomPosition()
         alien.set[alien.Tag]:getAlien()
         alien.set[alien.Tag]:play()
@@ -212,7 +246,7 @@ function alien.updateA()
                 alien.set[alien.i]:destroy()
                 alien.set[alien.i] = nil
             end
-            alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 0, 5)
+            alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 1, 5)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
@@ -222,7 +256,7 @@ function alien.updateA()
                 alien.set[alien.i]:destroy()
                 alien.set[alien.i] = nil
             end
-            alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 0, 5)
+            alien.set[alien.i] = Alien.new(alien.alienAPath, alien.A, 1, 5)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
@@ -239,7 +273,7 @@ function alien.updateB()
     -- alienB:getAlien()
     -- table.insert(alien.enemy, alienB) 
     if alien.Tag <= 20 then
-        alien.set[alien.Tag] = Alien.new(alien.alienBPath, alien.B, 0, 15)
+        alien.set[alien.Tag] = Alien.new(alien.alienBPath, alien.B, 3, 15)
         alien.set[alien.Tag]:randomPosition()
         alien.set[alien.Tag]:getAlien()
         alien.set[alien.Tag]:play()
@@ -250,7 +284,7 @@ function alien.updateB()
                 alien.set[alien.i]:destroy()
                 alien.set[alien.i] = nil
             end
-            alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 0, 15)
+            alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 3, 15)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
@@ -260,7 +294,7 @@ function alien.updateB()
                 alien.set[alien.i]:destroy()
                 alien.set[alien.i] = nil
             end
-            alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 0, 15)
+            alien.set[alien.i] = Alien.new(alien.alienBPath, alien.B, 3, 15)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
@@ -277,7 +311,7 @@ function alien.updateC()
     -- alienC:getAlien()
     -- table.insert(alien.enemy, alienC)
     if alien.Tag <= 20 then
-        alien.set[alien.Tag] = Alien.new(alien.alienCPath, alien.C, 0, 50)
+        alien.set[alien.Tag] = Alien.new(alien.alienCPath, alien.C, 10, 50)
         alien.set[alien.Tag]:randomPosition()
         alien.set[alien.Tag]:getAlien()
         -- alien.set[alien.Tag]:play()
@@ -288,7 +322,7 @@ function alien.updateC()
                 alien.set[alien.i]:destroy()
                 alien.set[alien.i] = nil
             end
-            alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 0, 50)
+            alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 10, 50)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
@@ -298,7 +332,7 @@ function alien.updateC()
                 alien.set[alien.i]:destroy()
                 alien.set[alien.i] = nil
             end
-            alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 0, 50)
+            alien.set[alien.i] = Alien.new(alien.alienCPath, alien.C, 10, 50)
             alien.set[alien.i]:randomPosition()
             alien.set[alien.i]:getAlien()
             alien.set[alien.i]:play()
