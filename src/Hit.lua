@@ -5,6 +5,20 @@ function hit.update()
     -- if table.getn(alien.set) ~= 0 and table.getn(bullet.set) ~= 0 then
         for indexAlien, alienObj in pairs(alien.set) do
             -- if alienObj ~= nil then
+                ----------------------------
+                -- 在这里判断是否和英雄碰撞 --
+                ----------------------------
+                -- print(load.hero:getBoundingBox().x, load.hero:getBoundingBox().y)
+                alienObj:refreshBox()
+                if cc.rectIntersectsRect(alienObj:getBox(), hero.getBox()) then
+                    -- print(">>>>>>>>>>>>>>>>>>>>")
+                    -- print("Hero has intersected.")
+                    -- print("<<<<<<<<<<<<<<<<<<<<")
+                    hero.destroy()
+                end
+                ----------------------------
+                -- 在这里判断是否和子弹碰撞 --
+                ----------------------------
                 for indexBullet, bulletObj in pairs(bullet.set) do 
                     -- if bulletObj ~= nil then
                         alienObj:refreshBox()
@@ -22,7 +36,7 @@ function hit.update()
                             alienObj:destroy()
                             bulletObj:destroy()
                             local hp = alienObj:getHP()
-                            
+
                             -- 可能有遗留的指针没有销毁，加一个位置判断 --
                             if hp == 0 then
                                 alien.set[indexAlien] = nil

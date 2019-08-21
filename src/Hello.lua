@@ -7,6 +7,7 @@ require "alien"
 require "hit"
 require "controller"
 require "score"
+require "hero"
 
 -- cclog–≈œ¢ --
 cclog = function(...)
