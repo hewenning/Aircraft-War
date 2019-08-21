@@ -21,9 +21,9 @@ function load.loadModel()
     local temp = load.Canvas:getChildByName("hero")
     load.hero = temp
     -- Ӣ�۵Ľڵ� --
-    load.heroBox = load.hero:getBoundingBox() 
-    print(load.heroBox)
-    local fire = load.hero:getChildByName("fireleft")
+    -- load.heroBox = load.hero:getBoundingBox() 
+    -- print(load.heroBox.x, load.heroBox.y, load.heroBox.width, load.heroBox.height)
+    --local fire = load.hero:getChildByName("fireleft")
     -- fire:setStartColor({255, 0, 0, 0})
     -- fire:setEndColor({255, 0, 0, 0})
     

@@ -80,7 +80,7 @@ function Alien:play()
     elseif self.name == alien.C then
         local action = cc.Sequence:create( 
             {
-                cc.MoveBy:create(6, cc.p(0, -1200)),
+                cc.MoveBy:create(6, cc.p(0, -1400)),
             }
         )
         self:runAction(action)
@@ -103,6 +103,10 @@ function Alien:getHP()
 	return self.hp
 end
  
+function Alien:setHP(num)
+    self.hp = num
+end
+
 function Alien:getScore()
 	return self.score
 end

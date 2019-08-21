@@ -26,7 +26,10 @@ function schedule.setup()
     alienCEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(alien.updateC, 10, false)
 
     -- 创建子弹和敌机碰撞的定时器 --
-    hitEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(hit.update, 1/60, false)
+    hitEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(hit.checkBulletToAlien, 1/60, false)
+    
+    -- 创建英雄和敌机碰撞的定时器 --
+    --hitHeroEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(hit.checkAlienToHero, 0.1, false)
 
 end
 
