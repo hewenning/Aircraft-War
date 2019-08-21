@@ -42,15 +42,21 @@ end
 
 function load.loadGame()
     
-
+    
     local creatorReaderStart = creator.CreatorReader:createWithFilename('Resources/creator/Scene/helloworld.ccreator')
     creatorReaderStart:setup()
     local scene = creatorReaderStart:getSceneGraph()
     cc.Director:getInstance():replaceScene(scene)
+    
     -- 获取场景下的节点 -- 
     local children = scene:getChildren()
     load.Canvas = children[2]
 
+    controller.PauesAndResume()
+    -- 暂停游戏和恢复游戏和退出游戏 --
+    -- cc.Director.sharedDirector():pause()
+    -- cc.Director.sharedDirector():resume()
+    -- cc.Director:sharedDirector():endToLua()
     ------------------
     -- 键盘控制飞机  --
     ------------------
@@ -71,9 +77,9 @@ function load.loadGame()
     -- 获取到标签节点 --
     -------------------
     -- Canvas:getChildByName("gamelabel"):setString("")    
-    local label = load.Canvas:getChildByName("label")
-    local gamelabel = label:getChildByName("gamelabel")
-    gamelabel:setString("")
+    -- local label = load.Canvas:getChildByName("label")
+    -- local gamelabel = label:getChildByName("gamelabel")
+    -- gamelabel:setString("")
 
     -------------------
     -- 启动调度器设置 --
