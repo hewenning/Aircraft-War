@@ -46,9 +46,12 @@ local function main()
     -- 初始化OpenGL --
     initGLView()
 
-    -- 加载模型 --
-    load.loadModel()
+    -- 加载最开始界面 --
+    load.loadUI()
     
+    -- 加载游戏界面 --
+    --load.loadGame()
+
     -- 传入随机种子 --
     math.randomseed(tostring(os.time()):reverse():sub(1, 6))
 
