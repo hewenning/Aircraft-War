@@ -1,6 +1,6 @@
 hit = {}
 
-function hit.update()
+function hit.checkBulletToAlien()
     -- print("hit >>>>>>>>>>>>>>>>>>")
     -- if table.getn(alien.set) ~= 0 and table.getn(bullet.set) ~= 0 then
         for indexAlien, alienObj in pairs(alien.set) do
@@ -9,13 +9,20 @@ function hit.update()
                 -- 在这里判断是否和英雄碰撞 --
                 ----------------------------
                 -- print(load.hero:getBoundingBox().x, load.hero:getBoundingBox().y)
-                alienObj:refreshBox()
-                if cc.rectIntersectsRect(alienObj:getBox(), hero.getBox()) then
-                    -- print(">>>>>>>>>>>>>>>>>>>>")
-                    -- print("Hero has intersected.")
-                    -- print("<<<<<<<<<<<<<<<<<<<<")
-                    hero.destroy()
-                end
+                -- alienObj:refreshBox()
+                -- if cc.rectIntersectsRect(alienObj:getBox(), hero.getBox()) then
+                --     -- print(hero.getBox().x, hero.getBox().y)
+                --     -- 敌人和飞机同归于尽 --
+                --     alienObj:setHP(1)
+                --     alienObj:destroy()
+                --     alien.set[indexAlien] = nil
+                --     -- 飞机死亡 --
+                --     hero.destroy()
+                --     --print(hero.getHP())
+                --     -- hero.getHP()
+                --     hero.getLife()
+                --     break
+                -- end 
                 ----------------------------
                 -- 在这里判断是否和子弹碰撞 --
                 ----------------------------
@@ -23,9 +30,9 @@ function hit.update()
                     -- if bulletObj ~= nil then
                         alienObj:refreshBox()
                         bulletObj:refreshBox()
-                        -- print("hero:getBox():" ,load.hero:getBoundingBox().x ,load.hero:getBoundingBox().y ,load.hero:getBoundingBox().width ,load.hero:getBoundingBox().height)
-                        -- print("alienObj:getBox():" ,alienObj:getBox().x ,alienObj:getBox().y ,alienObj:getBox().width ,alienObj:getBox().height)
-                        -- print("bulletObj:getBox():" ,bulletObj:getBox().x ,bulletObj:getBox().y ,bulletObj:getBox().width ,bulletObj:getBox().height)
+                        ----------------------------
+                        -- 在这里判断是否和子弹碰撞 --
+                        ----------------------------
                         if cc.rectIntersectsRect(alienObj:getBox(), bulletObj:getBox()) then
                             print("----------------------------------")
                             print("The rectangles have intersected.")
@@ -50,5 +57,20 @@ function hit.update()
         end 
     -- end
 end
+
+-- function hit.checkAlienToHero()
+--     for k, alienObject in pairs(alien.set) do
+--         ----------------------------
+--         -- 在这里判断是否和英雄碰撞 --
+--         ----------------------------
+--         -- print(load.hero:getBoundingBox().x, load.hero:getBoundingBox().y)
+--         alienObject:refreshBox()
+--         if cc.rectIntersectsRect(alienObject:getBox(), hero.getBox()) then
+--             -- print(hero.getBox().x, hero.getBox().y)
+--             hero.destroy()
+--             print(hero.getHP())
+--         end              
+--     end
+-- end
 
 return hit
