@@ -23,7 +23,7 @@ function load.loadUI()
         loadActionFrame:addSpriteFrameWithFile(nameLoad)
     end
     -- Should last 1 second. And there are 5 frames.
-    loadActionFrame:setDelayPerUnit(4 / 4)
+    loadActionFrame:setDelayPerUnit(6 / 4)
     loadActionFrame:setRestoreOriginalFrame(true)
     local loadAction = cc.Animate:create(loadActionFrame)
     
