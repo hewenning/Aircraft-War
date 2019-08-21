@@ -21,7 +21,12 @@ function hit.update()
                             score.refresh(alienObj:getScore())
                             alienObj:destroy()
                             bulletObj:destroy()
-                            alien.set[indexAlien] = nil
+                            local hp = alienObj:getHP()
+                            
+                            -- 可能有遗留的指针没有销毁，加一个位置判断 --
+                            if hp == 0 then
+                                alien.set[indexAlien] = nil
+                            end
                             bullet.set[indexBullet] = nil
                             break
                         end
