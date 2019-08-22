@@ -39,7 +39,7 @@ function controller.initData()
     -- 血量加满 -- 
     hero.hp = 100
     -- 生命值加满 --
-    hero.life = 4
+    hero.life = 5
     load.Canvas:getChildByName("label"):getChildByName("lifevalue"):setString(hero.life)
     -- 敌机和子弹销毁 --
     for _, i  in pairs(alien.set) do
