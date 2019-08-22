@@ -30,7 +30,12 @@ function keyboard.getKeyBoardStatus()
         if keyboard.keyStatus[140] == 1 then
             controller.Exit()
         end
-        
+
+        -- 使用道具 --
+        if keyboard.keyStatus[149] == 1 then
+            prop.bombRelease()
+        end
+
     end
  
     local function onKeyReleased(keyCode, event)

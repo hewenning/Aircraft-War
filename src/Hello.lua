@@ -10,6 +10,8 @@ require "score"
 require "hero"
 require "controller"
 require "gameover"
+require "archive"
+require "prop"
 
 -- cclog–≈œ¢ --
 cclog = function(...)
