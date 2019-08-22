@@ -7,6 +7,7 @@ function load.loadUI()
     local creatorReaderLoad = creator.CreatorReader:createWithFilename('Resources/creator/Scene/loading.ccreator')
     creatorReaderLoad:setup()
     local sceneStart = creatorReaderLoad:getSceneGraph()
+
     cc.Director:getInstance():replaceScene(sceneStart)
     -- 获取场景下的节点 -- 
     local children = sceneStart:getChildren()
@@ -23,7 +24,7 @@ function load.loadUI()
         loadActionFrame:addSpriteFrameWithFile(nameLoad)
     end
     -- Should last 1 second. And there are 5 frames.
-    loadActionFrame:setDelayPerUnit(6 / 4)
+    loadActionFrame:setDelayPerUnit(2 / 4)
     loadActionFrame:setRestoreOriginalFrame(true)
     local loadAction = cc.Animate:create(loadActionFrame)
     
@@ -52,7 +53,7 @@ function load.loadGame()
     local children = scene:getChildren()
     load.Canvas = children[2]
 
-    controller.PauesAndResume()
+
     -- 暂停游戏和恢复游戏和退出游戏 --
     -- cc.Director.sharedDirector():pause()
     -- cc.Director.sharedDirector():resume()
