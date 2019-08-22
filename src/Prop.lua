@@ -33,17 +33,17 @@ function prop.bombRelease()
                 cc.MoveBy:create(2, cc.p(0, 500)),
                 actionBomb, 
                 cc.CallFunc:create( function()
+                    for i, v in pairs(alien.set) do
+                        v:setHP(1)
+                        v:destroy()
+                        alien.set[i] = nil
+                    end
                     bomb:removeFromParent()
                     print("The bomb has been cleared.")   
                 end ),          
             }
         )
         bomb:runAction(action)
-        
-        for _, v in pairs(alien.set) do
-            v:setHP(1)
-            v:destroy()
-        end
 
     else
         -- 可以加提示信息 --   
