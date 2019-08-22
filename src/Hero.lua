@@ -23,7 +23,7 @@ function hero.getLife()
     local label = load.Canvas:getChildByName("label")
     local lifevalue = label:getChildByName("lifevalue")
     if hero.hp == 0 then
-        hero.life = hero.life - 50
+        hero.life = hero.life - 1
         lifevalue:setString(hero.life)
         hero.hp = 100
     end

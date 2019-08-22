@@ -13,6 +13,24 @@ function keyboard.getKeyBoardStatus()
         local buf = string.format("%d DOWN", keyCode)
         keyboard.keyStatus[keyCode] = 1
         print(buf)
+
+        -- 选择界面 --
+        if keyboard.keyStatus[6] == 1 then
+            controller.Choose()
+        end
+        -- 继续游戏 --
+        if keyboard.keyStatus[126] == 1 then
+            controller.Resume()
+        end
+        -- 重新开始 --
+        if keyboard.keyStatus[141] == 1 then
+            controller.Reload()
+        end
+        -- 退出游戏 --
+        if keyboard.keyStatus[140] == 1 then
+            controller.Exit()
+        end
+        
     end
  
     local function onKeyReleased(keyCode, event)

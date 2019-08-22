@@ -1,6 +1,7 @@
 schedule = {}
 
 function schedule.setup()
+
     -- 打开英雄节点的默认调度器 --
     load.hero:scheduleUpdateWithPriorityLua(move.update, 0)
 
@@ -25,11 +26,14 @@ function schedule.setup()
     alienBEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(alien.updateB, 3, false)
     alienCEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(alien.updateC, 10, false)
 
-    -- 创建子弹和敌机碰撞的定时器 --
+    -- 创建子弹和敌机碰撞的调度器 --
     hitEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(hit.checkBulletToAlien, 1/60, false)
     
-    -- 创建英雄和敌机碰撞的定时器 --
+    -- 创建英雄和敌机碰撞的调度器 --
     --hitHeroEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(hit.checkAlienToHero, 0.1, false)
+
+    -- 创建暂停的键盘的调度器 --
+    -- bulletEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(controller.PauesAndResume, 0.1, false)
 
 end
 
