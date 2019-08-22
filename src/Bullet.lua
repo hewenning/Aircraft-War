@@ -53,7 +53,7 @@ function Bullet:getBullet()
 end
 
 function Bullet:play()
-    local action = transition.sequence( 
+    local action = cc.Sequence:create( 
         {
             cc.MoveBy:create(2, cc.p(0, 1000)), 
             -- cc.CallFunc:create( function()
