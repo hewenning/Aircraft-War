@@ -9,7 +9,7 @@ function prop.bombRelease()
         -- 释放动画 --
         local animationBomb = cc.Animation:create()
         local nameBomb
-        for i = 1, 3 do
+        for i = 1, 4 do
             nameBomb = "bomb/bombaction"..i..".png"
             animationBomb:addSpriteFrameWithFile(nameBomb)
         end
@@ -30,7 +30,7 @@ function prop.bombRelease()
         -- 清空所有对象 --
         local action = cc.Sequence:create( 
             {
-                cc.MoveBy:create(2, cc.p(0, 500)),
+                cc.MoveTo:create(2, cc.p(load.hero:getPositionX(), 500)),
                 actionBomb, 
                 cc.CallFunc:create( function()
                     for i, v in pairs(alien.set) do
@@ -38,6 +38,7 @@ function prop.bombRelease()
                         v:destroy()
                         alien.set[i] = nil
                     end
+                    score.refresh(3000) 
                     bomb:removeFromParent()
                     print("The bomb has been cleared.")   
                 end ),          
