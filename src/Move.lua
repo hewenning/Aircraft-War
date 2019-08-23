@@ -3,22 +3,46 @@ move = {}
 --用来处理英雄移动的函数 --
 function move.doleft()
     print("come in left")
-    load.hero:runAction(cc.MoveBy:create(0.1, cc.p(-8, 0)))
+    -- print(load.hero:getPositionX(), load.hero:getPositionY())
+    -- load.hero:runAction(cc.MoveBy:create(0.1, cc.p(-5, 0)))
+    if load.hero:getPositionX() > 60 then
+        load.hero:runAction(cc.MoveBy:create(0.1, cc.p(-6, 0)))  
+    elseif load.hero:getPositionX() <= 60 then
+        load.hero:runAction(cc.MoveTo:create(0.01, cc.p(60, load.hero:getPositionY())))
+    end
 end
 
 function move.doright()
     print("come in right")
-    load.hero:runAction(cc.MoveBy:create(0.1, cc.p(8, 0)))
+    -- print(load.hero:getPositionX(), load.hero:getPositionY())
+    -- load.hero:runAction(cc.MoveBy:create(0.1, cc.p(5, 0)))
+    if load.hero:getPositionX() < 580 then
+        load.hero:runAction(cc.MoveBy:create(0.1, cc.p(6, 0)))  
+    elseif load.hero:getPositionX() >= 580 then
+        load.hero:runAction(cc.MoveTo:create(0.01, cc.p(580, load.hero:getPositionY())))
+    end
 end
 
 function move.doup()
     print("come in up")
-    load.hero:runAction(cc.MoveBy:create(0.1, cc.p(0, 8)))
+    -- print(load.hero:getPositionX(), load.hero:getPositionY())
+    -- load.hero:runAction(cc.MoveBy:create(0.1, cc.p(0, 5)))
+    if load.hero:getPositionY() < 900 then
+        load.hero:runAction(cc.MoveBy:create(0.1, cc.p(0, 6)))  
+    elseif load.hero:getPositionX() >= 900 then
+        load.hero:runAction(cc.MoveTo:create(0.01, cc.p(load.hero:getPositionX(), 900)))
+    end
 end
 
 function move.dodown()
     print("come in down")
-    load.hero:runAction(cc.MoveBy:create(0.1, cc.p(0, -8)))
+    -- print(load.hero:getPositionX(), load.hero:getPositionY())
+    -- load.hero:runAction(cc.MoveBy:create(0.1, cc.p(0, -5)))
+    if load.hero:getPositionY() > 180 then
+        load.hero:runAction(cc.MoveBy:create(0.1, cc.p(0, -6)))  
+    elseif load.hero:getPositionX() <= 180 then
+        load.hero:runAction(cc.MoveTo:create(0.01, cc.p(load.hero:getPositionX(), 180)))
+    end
 end
 
 

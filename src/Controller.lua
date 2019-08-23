@@ -94,6 +94,18 @@ function controller.keySwitch()
     if keyboard.keyStatus[137] == 1 then
         mall.Resume()
     end
+
+    -- -----------------
+    -- -- 背包控制部分 --
+    -- -----------------
+    -- if keyboard.keyStatus[125] == 1 then
+    --     bag.Choose()
+    -- end
+
+    -- if keyboard.keyStatus[145] == 1 then
+    --     bag.Resume()
+    -- end
+
 end
 
 return controller
