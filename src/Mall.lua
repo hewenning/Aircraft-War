@@ -1,0 +1,3 @@
+mall = {}
+
+return mall
