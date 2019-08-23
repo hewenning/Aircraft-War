@@ -90,8 +90,8 @@ end
 
 function Alien:randomPosition()
     -- 计算出随机的位置 --
-    local leftMinX = -320 + self:getContentSize().width / 2
-    local rightMaxX = 320 - self:getContentSize().width / 2
+    local leftMinX = -320 
+    local rightMaxX = 320 - self:getChildByName(self.name):getContentSize().width
     -- math.randomseed(tostring(os.time()):reverse():sub(1, 6))
     local x = math.random(leftMinX, rightMaxX)
     local y = 480
