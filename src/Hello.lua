@@ -12,6 +12,7 @@ require "controller"
 require "gameover"
 require "archive"
 require "prop"
+require "mall"
 
 -- cclog–≈œ¢ --
 cclog = function(...)
