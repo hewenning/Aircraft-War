@@ -8,7 +8,7 @@ function hit.checkBulletToAlien()
                 ----------------------------
                 -- 在这里判断是否和英雄碰撞 --
                 ----------------------------
-                -- print(load.hero:getBoundingBox().x, load.hero:getBoundingBox().y)
+                --print(load.hero:getBoundingBox().x, load.hero:getBoundingBox().y)
                 -- alienObj:refreshBox()
                 -- if cc.rectIntersectsRect(alienObj:getBox(), hero.getBox()) then
                 --     -- print(hero.getBox().x, hero.getBox().y)
@@ -68,7 +68,9 @@ end
 --         if cc.rectIntersectsRect(alienObject:getBox(), hero.getBox()) then
 --             -- print(hero.getBox().x, hero.getBox().y)
 --             hero.destroy()
---             print(hero.getHP())
+--             alienObj:setHP(1)
+--             alienObject:destroy()
+--             alien.set[k] = nil
 --         end              
 --     end
 -- end

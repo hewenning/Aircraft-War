@@ -4,6 +4,8 @@ hero = { hp = 100, life = 5,}
 
 function hero.getBox()
     local heroBox =  load.hero:getBoundingBox()
+    heroBox.x = load.hero:getPositionX()
+    heroBox.y = load.hero:getPositionY()
     return heroBox
 end
 

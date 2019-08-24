@@ -30,7 +30,7 @@ function schedule.setup()
     hitEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(hit.checkBulletToAlien, 1/60, false)
     
     -- 创建英雄和敌机碰撞的调度器 --
-    --hitHeroEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(hit.checkAlienToHero, 0.1, false)
+    -- hitHeroEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(hit.checkAlienToHero, 0.1, false)
 
     -- 创建暂停的键盘的调度器 --
     -- bulletEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(controller.PauesAndResume, 0.1, false)
