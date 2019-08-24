@@ -1,4 +1,4 @@
-controller = {}
+controller = {choseTag = 1,}
 
 -- 选择界面 --
 function controller.Choose()
@@ -88,23 +88,17 @@ function controller.keySwitch()
     -- 商城控制部分 --
     -----------------
     if keyboard.keyStatus[136] == 1 then
-        mall.Choose()
-    end
-
-    if keyboard.keyStatus[137] == 1 then
-        mall.Resume()
+        -- mall.Choose()
+        mall.ChooseAndResume()
     end
 
     -- -----------------
     -- -- 背包控制部分 --
     -- -----------------
-    -- if keyboard.keyStatus[125] == 1 then
-    --     bag.Choose()
-    -- end
+    if keyboard.keyStatus[125] == 1 then
+        bag.ChooseAndResume()
+    end
 
-    -- if keyboard.keyStatus[145] == 1 then
-    --     bag.Resume()
-    -- end
 
 end
 

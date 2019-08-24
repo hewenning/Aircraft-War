@@ -1,20 +1,24 @@
-mall = {}
-function mall.Choose()
+mall = {chooseTag = 1,}
 
-    cc.Director.sharedDirector():pause()
-    local mallReader = creator.CreatorReader:createWithFilename('Resources/creator/Scene/mall.ccreator')
-    mallReader:setup()
-    local sceneMall = mallReader:getSceneGraph()
-    local mallground = sceneMall:getChildByName("mall")
-    mallground:removeFromParent(false)
-    load.Canvas:addChild(mallground)
+function mall.ChooseAndResume()
+    if mall.chooseTag%2 ~= 0 then
+        cc.Director.sharedDirector():pause()
+        local mallReader = creator.CreatorReader:createWithFilename('Resources/creator/Scene/mall.ccreator')
+        mallReader:setup()
+        local sceneMall = mallReader:getSceneGraph()
+        local mallground = sceneMall:getChildByName("mall")
+        mallground:removeFromParent(false)
+        load.Canvas:addChild(mallground)
+    end
 
-end
+    if mall.chooseTag%2 == 0 then
+        load.Canvas:getChildByName("mall"):removeFromParent()
+        cc.Director.sharedDirector():resume()
+    end
 
--- ¼ÌÐøÓÎÏ· --
-function mall.Resume()
-    load.Canvas:getChildByName("mall"):removeFromParent()
-    cc.Director.sharedDirector():resume()
+    mall.chooseTag = mall.chooseTag + 1
+    print(mall.chooseTag)
+
 end
 
 return mall

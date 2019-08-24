@@ -13,7 +13,7 @@ require "gameover"
 require "archive"
 require "prop"
 require "mall"
---require "bag"
+require "bag"
 
 -- cclog–≈œ¢ --
 cclog = function(...)
