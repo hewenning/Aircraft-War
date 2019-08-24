@@ -99,9 +99,6 @@ function controller.keySwitch()
         bag.ChooseAndResume()
     end
 
-    -- if keyboard.keyStatus[145] == 1 then
-    --     bag.Resume()
-    -- end
 
 end
 
