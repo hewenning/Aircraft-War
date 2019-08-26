@@ -43,7 +43,6 @@ end
 
 function load.loadGame()
     
-    
     local creatorReaderStart = creator.CreatorReader:createWithFilename('Resources/creator/Scene/helloworld.ccreator')
     creatorReaderStart:setup()
     local scene = creatorReaderStart:getSceneGraph()
@@ -53,11 +52,6 @@ function load.loadGame()
     local children = scene:getChildren()
     load.Canvas = children[2]
 
-
-    -- 暂停游戏和恢复游戏和退出游戏 --
-    -- cc.Director.sharedDirector():pause()
-    -- cc.Director.sharedDirector():resume()
-    -- cc.Director:sharedDirector():endToLua()
     ------------------
     -- 键盘控制飞机  --
     ------------------
@@ -66,27 +60,17 @@ function load.loadGame()
     -- 获取到英雄精灵的节点 --
     local temp = load.Canvas:getChildByName("hero")
     load.hero = temp
-    -- 英雄的节点 --
-    -- load.heroBox = load.hero:getBoundingBox() 
-    -- print(load.heroBox.x, load.heroBox.y, load.heroBox.width, load.heroBox.height)
-    --local fire = load.hero:getChildByName("fireleft")
-    -- fire:setStartColor({255, 0, 0, 0})
-    -- fire:setEndColor({255, 0, 0, 0})
-    
-    
-    -------------------
-    -- 获取到标签节点 --
-    -------------------
-    -- Canvas:getChildByName("gamelabel"):setString("")    
-    -- local label = load.Canvas:getChildByName("label")
-    -- local gamelabel = label:getChildByName("gamelabel")
-    -- gamelabel:setString("")
+
 
     -------------------
     -- 启动调度器设置 --
     -------------------
     schedule.setup()
 
+    -------------------
+    -- 添加菜单的按钮 --
+    -------------------
+    menu.mainButton()
 
 end
 
