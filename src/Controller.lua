@@ -41,6 +41,9 @@ function controller.initData()
     -- 生命值加满 --
     hero.life = 5
     load.Canvas:getChildByName("label"):getChildByName("lifevalue"):setString(hero.life)
+    -- 道具初始化 --
+    prop.bombnum = 5
+    local bombnumlabel = load.Canvas:getChildByName("label"):getChildByName("bombnumlabel"):setString(prop.bombnum)
     -- 敌机和子弹销毁 --
     for _, i  in pairs(alien.set) do
         i:removeFromParent()

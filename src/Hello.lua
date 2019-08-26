@@ -14,10 +14,19 @@ require "archive"
 require "prop"
 require "mall"
 require "bag"
+require "menu"
 
 -- cclog信息 --
 cclog = function(...)
     print(string.format(...))
+end
+
+-- for CCLuaEngine traceback
+function __G__TRACKBACK__(msg)
+    cclog("----------------------------------------")
+    cclog("LUA ERROR: " .. tostring(msg) .. "\n")
+    cclog(debug.traceback())
+    cclog("----------------------------------------")
 end
 
 -- 左下角OpenGl的信息 --
@@ -61,8 +70,7 @@ local function main()
     -- 传入随机种子 --
     math.randomseed(tostring(os.time()):reverse():sub(1, 6))
 
-    -- 开启碰撞系统 --
-    -- controller.Collosion()
+
 
     -- 运行时的时候查看节点树 --
     do
@@ -72,7 +80,8 @@ local function main()
 
 end
 
-main()
+xpcall(main, __G__TRACKBACK__)
+--main()
 
 return hello
 

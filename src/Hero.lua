@@ -39,7 +39,7 @@ function hero.destroy()
         heroDestory:addSpriteFrameWithFile(nameHero)
     end
     -- Should last 1 second. And there are 5 frames.
-    heroDestory:setDelayPerUnit(0.8 / 5)
+    heroDestory:setDelayPerUnit(0.2 / 5)
     heroDestory:setRestoreOriginalFrame(true)
     local action = cc.Animate:create(heroDestory)
     load.hero:runAction(action) 
