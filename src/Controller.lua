@@ -28,4 +28,10 @@ function controller.initData()
     -- to do
 end
 
+function controller.keySwitch()
+    if keyboard.keyStatus[149] == 1 then
+        prop.bombRelease()
+    end
+end
+
 return controller

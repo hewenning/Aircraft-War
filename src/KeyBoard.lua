@@ -12,16 +12,11 @@ function keyboard.getKeyBoardStatus()
     local function onKeyPressed(keyCode, event)
         local buf = string.format("%d DOWN", keyCode)
         keyboard.keyStatus[keyCode] = 1
+        controller.keySwitch()
         print(buf)
-        
-        -- 键盘控制 --
-        -- controller.keySwitch()
     end
  
     local function onKeyReleased(keyCode, event)
-        -- 测试外星人类 --
-        -- local alienA = Alien.new(alien.alienAPath, alien.A, 0, 0, 0)
-        -- alienA:getAlien(300, 200)
 
         keyboard.keyStatus[keyCode] = 0
         local buf = string.format("%d UP", keyCode)
