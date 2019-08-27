@@ -32,6 +32,14 @@ function bag.propFirstInfo()
     local propbombButton = bag.layout:getChildByName("propbomb")
     local propbombLabel = propbombButton:getChildByName("Background"):getChildByName("Label")
     propbombLabel:setString(prop.bombnum)
+    -- 定义点击显示信息按钮 --
+    propbombButton:addTouchEventListener(function(sender, eventType)
+        if (0 == eventType)  then
+            print("PropbombButton button pressed.")
+            -- local str = "You have "..prop.bomnum.."bombs.Clear all,and get G3000."
+            prop.infoDisplay("Clear all,and get G3000.") 
+        end
+    end)
 end
 
 return bag

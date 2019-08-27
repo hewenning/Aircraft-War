@@ -74,6 +74,15 @@ function mall.propFirstBuy()
             prop.refreshBombNum()
         end
     end)
+
+    -- 定义点击显示信息按钮 --
+    propbombButton:addTouchEventListener(function(sender, eventType)
+        if (0 == eventType)  then
+            print("PropbombButton button pressed.")
+            prop.infoDisplay("Cost G5000.Clear all,and get G3000.") 
+        end
+    end)
 end
+
 
 return mall
