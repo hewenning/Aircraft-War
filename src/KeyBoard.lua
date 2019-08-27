@@ -10,9 +10,10 @@ function keyboard.getKeyBoardStatus()
 
     -- 加入键盘事件 -- 
     local function onKeyPressed(keyCode, event)
-        local buf = string.format("%d DOWN", keyCode)
         keyboard.keyStatus[keyCode] = 1
+        -- 对应按键的使用 --
         controller.keySwitch()
+        local buf = string.format("%d DOWN", keyCode)
         print(buf)
     end
  
