@@ -7,6 +7,17 @@ function bag.bagView()
     bagNode:removeFromParent(false)
     load.Canvas:addChild(bagNode)
     bag.propPurchase()
+    bag.exitBagView()
+end
+
+function bag.exitBagView()
+    local exitbag = load.Canvas:getChildByName("bag"):getChildByName("exitbag")
+    exitbag:addTouchEventListener(function(sender, eventType)
+        if (0 == eventType)  then
+            print("Exitbag button pressed.")
+            load.Canvas:getChildByName("bag"):removeFromParent()
+        end
+    end)
 end
 
 function bag.propPurchase()
