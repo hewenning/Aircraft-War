@@ -42,7 +42,7 @@ function prop.bombRelease()
                         alien.set[i] = nil
                     end
                     -- 买炸弹需要5000，使用的话只是清屏加上3000分 --
-                    score.refresh(3000) 
+                    score.addScoreValue(3000) 
                     bomb:removeFromParent()
                     print("The bomb has been cleared.")   
                 end ),          
