@@ -44,7 +44,7 @@ function hit.checkBulletToAlien()
                             bulletObj:destroy()
                             local hp = alienObj:getHP()
 
-                            -- 可能有遗留的指针没有销毁，加一个位置判断 --
+                            -- 可能有遗留的指针没有销毁，后期加一个位置判断 --
                             if hp == 0 then
                                 alien.set[indexAlien] = nil
                             end
@@ -58,22 +58,26 @@ function hit.checkBulletToAlien()
     -- end
 end
 
--- function hit.checkAlienToHero()
---     for _, alienObject in pairs(alien.set) do
---         ----------------------------
---         -- 在这里判断是否和英雄碰撞 --
---         ----------------------------
---         -- print(load.hero:getBoundingBox().x, load.hero:getBoundingBox().y)
---         alienObject:refreshBox()
---         if cc.rectIntersectsRect(alienObject:getBox(), hero.getBox()) then
---             -- print(hero.getBox().x, hero.getBox().y)
---             hero.destroy()
---             -- alienObj:setHP(1)
---             -- alienObject:destroy()
---             -- alien.set[k] = nil
---             break
---         end              
---     end
--- end
+function hit.checkAlienToHero()
+    for i, alienObject in pairs(alien.set) do
+        ----------------------------
+        -- 在这里判断是否和英雄碰撞 --
+        ----------------------------
+        -- print(load.hero:getBoundingBox().x, load.hero:getBoundingBox().y)
+        alienObject:refreshBox()
+        local alienBox = alienObject:getBox()
+        alienBox.x = alienBox.x + 320
+        alienBox.y = alienBox.y + 520
+        if cc.rectIntersectsRect(alienObject:getBox(), hero.getBox()) then
+            -- print(hero.getBox().x, hero.getBox().y)
+            hero.destroy()
+            hero.getLife()
+            alienObject:setHP(1)
+            alienObject:destroy()
+            alien.set[i] = nil
+            break
+        end              
+    end
+end
 
 return hit
