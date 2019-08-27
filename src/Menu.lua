@@ -96,6 +96,7 @@ function menu.propPurchase()
             print("Propbomb button pressed.")
             if score.value >= 5000 then
                 score.value = score.value - 5000
+                score.refreshScoreValue()
                 prop.bombnum = prop.bombnum + 1
                 prop.refreshBombNum()
                 load.Canvas:getChildByName("mall"):removeFromParent()

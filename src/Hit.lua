@@ -39,7 +39,7 @@ function hit.checkBulletToAlien()
                             print("----------------------------------")
                             -- 相交之后子弹对象和飞机清空节点，并且将对应位置设置为空值 --
                             -- alienObj:boom()
-                            score.refresh(alienObj:getScore())
+                            score.addScoreValue(alienObj:getScore())
                             alienObj:destroy()
                             bulletObj:destroy()
                             local hp = alienObj:getHP()
