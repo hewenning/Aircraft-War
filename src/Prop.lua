@@ -1,11 +1,14 @@
 prop = {bombnum = 5,}
 
+function prop.refreshBombNum() 
+    local bombnumlabel = load.Canvas:getChildByName("label"):getChildByName("bombnumlabel")
+    bombnumlabel:setString(prop.bombnum)
+end
+
 function prop.bombRelease()
     if prop.bombnum > 0 then
         prop.bombnum = prop.bombnum - 1
-        local bombnumlabel = load.Canvas:getChildByName("label"):getChildByName("bombnumlabel")
-        bombnumlabel:setString(prop.bombnum)
-
+        prop.refreshBombNum() 
         --  Õ∑≈∂Øª≠ --
         local animationBomb = cc.Animation:create()
         local nameBomb
