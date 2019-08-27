@@ -56,7 +56,7 @@ function prop.bombRelease()
 end
 
 -- 显示道具信息的函数，可以封装成类 --
-function prop.infoDisplay(node, str)
+function prop.infoDisplay(str)
     -- 加载文件 --
     local infoReader = creator.CreatorReader:createWithFilename('Resources/creator/Scene/propinfo.ccreator')
     local infoScene = infoReader:getSceneGraph()
@@ -72,7 +72,7 @@ function prop.infoDisplay(node, str)
     -- 显示三秒之后销毁 --
     local sequence = cc.Sequence:create( 
         {
-            cc.MoveBy:create(3, cc.p(0, 0)),
+            cc.MoveBy:create(1.5, cc.p(0, 0)),
             cc.CallFunc:create( function()
                 infoNode:removeFromParent()
                 print("The info has been cleared.")    
