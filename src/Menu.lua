@@ -47,6 +47,17 @@ function menu.itemsChoose()
     end)
 
     -----------------
+    --   背包部分   --
+    -----------------
+    bagButton:addTouchEventListener(function(sender, eventType)
+        if (0 == eventType)  then
+            print("Bag button pressed.")
+            bag.bagView()
+            itemsButton:removeFromParent()
+        end
+    end)
+
+    -----------------
     -- 游戏控制部分 --
     -----------------
     -- 定义Exit按钮 --
