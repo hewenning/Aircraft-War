@@ -16,8 +16,12 @@ function hero.setHPbar(num)
     HPbar:update(num/100)
 end
 
+function hero.getHP()
+    return hero.hp
+end
+
 -- 血量减为0的时候刷新血量,并且把生命值减1 -- 
-function hero.getLife()
+function hero.refreshLife()
     hero.hp = hero.hp - 50
     -- 血条测试 --
     hero.setHPbar(hero.hp)
@@ -26,6 +30,7 @@ function hero.getLife()
     local lifevalue = label:getChildByName("lifevalue")
     if hero.hp == 0 then
         hero.life = hero.life - 1
+        hero.destroy()
         lifevalue:setString(hero.life)
         hero.hp = 100
     end
@@ -39,7 +44,7 @@ function hero.destroy()
         heroDestory:addSpriteFrameWithFile(nameHero)
     end
     -- Should last 1 second. And there are 5 frames.
-    heroDestory:setDelayPerUnit(0.2 / 5)
+    heroDestory:setDelayPerUnit(0.5 / 5)
     heroDestory:setRestoreOriginalFrame(true)
     local action = cc.Animate:create(heroDestory)
     load.hero:runAction(action) 

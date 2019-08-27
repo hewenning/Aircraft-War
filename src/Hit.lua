@@ -70,8 +70,7 @@ function hit.checkAlienToHero()
         alienBox.y = alienBox.y + 520
         if cc.rectIntersectsRect(alienObject:getBox(), hero.getBox()) then
             -- print(hero.getBox().x, hero.getBox().y)
-            hero.destroy()
-            hero.getLife()
+            hero.refreshLife()
             alienObject:setHP(1)
             alienObject:destroy()
             alien.set[i] = nil
