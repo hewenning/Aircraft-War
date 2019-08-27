@@ -15,7 +15,7 @@ function keyboard.getKeyBoardStatus()
         print(buf)
         
         -- ¼üÅÌ¿ØÖÆ --
-        controller.keySwitch()
+        -- controller.keySwitch()
     end
  
     local function onKeyReleased(keyCode, event)
