@@ -11,6 +11,22 @@ function gameover.mainScene()
     local children = overScene:getChildren()
     gameover.Canvas = children[2]
 
+    local maxscore = gameover.Canvas:getChildByName("maxscore")
+    local maxhistory = gameover.Canvas:getChildByName("maxhistory")
+    maxscore:setString(score.value)
+    maxhistory:setString(score.value)
+    -- local restart = gameover.Canvas:getChildByName("restart")
+    -- restart:addTouchEventListener(function(sender, eventType)
+    --     if (0 == eventType)  then
+    --         print("Restart button pressed.")
+    --         -- local str = "You have "..prop.bomnum.."bombs.Clear all,and get G3000."
+    --         load.loadUI()
+    --         gameover.ininData()
+    --         cc.Director:getInstance():resume()
+    --     end
+    -- end)
+
 end
+
 
 return gameover

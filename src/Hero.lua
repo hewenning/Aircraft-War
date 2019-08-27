@@ -1,4 +1,4 @@
-hero = { hp = 100, life = 5,}
+hero = { hp = 100, life = 3,}
 
 -- local hp =  100
 
