@@ -74,6 +74,14 @@ function mall.propFirstBuy()
             prop.refreshBombNum()
         end
     end)
+
+    -- 定义点击显示信息按钮 --
+    propbombButton:addTouchEventListener(function(sender, eventType)
+        if (0 == eventType)  then
+            print("PropbombButton button pressed.")
+            
+        end
+    end)
 end
 
 return mall
