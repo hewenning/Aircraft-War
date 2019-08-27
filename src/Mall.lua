@@ -22,15 +22,19 @@ end
 
 function mall.propPurchase()
     -- 取到道具选择的界面的节点 --
-    local layout = load.Canvas:getChildByName("mall"):getChildByName("scrollview"):getChildByName("layout")
+    mall.layout = load.Canvas:getChildByName("mall"):getChildByName("scrollview"):getChildByName("layout")
+    mall.propFirstBuy()
+end
+
+-- 以后的道具可以写一个类 --
+function mall.propFirstBuy()
 
     -- 获取第一个道具的所有节点 --
-    local propbombButton = layout:getChildByName("propbomb")
+    local propbombButton = mall.layout:getChildByName("propbomb")
     local propbombAdd = propbombButton:getChildByName("add")
     local propbombSub = propbombButton:getChildByName("sub")
     local propbombEnter = propbombButton:getChildByName("enter")
     local propbombNum = propbombButton:getChildByName("Background"):getChildByName("bombnum")
-
     -- 定义ADD按钮 --
     propbombAdd:addTouchEventListener(function(sender, eventType)
         if (0 == eventType)  then
@@ -70,8 +74,6 @@ function mall.propPurchase()
             prop.refreshBombNum()
         end
     end)
-
 end
-
 
 return mall

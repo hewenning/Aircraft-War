@@ -22,19 +22,16 @@ end
 
 function bag.propPurchase()
     -- 取到道具选择的界面的节点 --
-    local layout = load.Canvas:getChildByName("bag"):getChildByName("scrollview"):getChildByName("layout")
+    bag.layout = load.Canvas:getChildByName("bag"):getChildByName("scrollview"):getChildByName("layout")
+    bag.propFirstInfo()
+end
+
+-- 以后的道具可以写一个类 --
+function bag.propFirstInfo()
     -- 第一个道具的节点 --
-    local propbombButton = layout:getChildByName("propbomb")
+    local propbombButton = bag.layout:getChildByName("propbomb")
     local propbombLabel = propbombButton:getChildByName("Background"):getChildByName("Label")
     propbombLabel:setString(prop.bombnum)
-    -- 定义继续游戏的按钮 --
-    propbombButton:addTouchEventListener(function(sender, eventType)
-        if (0 == eventType)  then
-            print("Propbomb button pressed.")
-            load.Canvas:getChildByName("bag"):removeFromParent()
-        end
-    end)
-
 end
 
 return bag
