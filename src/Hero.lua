@@ -36,6 +36,10 @@ function hero.refreshLife()
     end
 end
 
+function hero.getLife()
+    return hero.life
+end
+
 function hero.destroy()
     local heroDestory = cc.Animation:create()
     local nameHero  

@@ -73,6 +73,9 @@ function hit.checkAlienToHero()
             hero.refreshLife()
             alienObject:setHP(1)
             alienObject:destroy()
+            if hero.getLife() == -1 then
+                gameover.mainScene() 
+            end
             alien.set[i] = nil
             break
         end              
