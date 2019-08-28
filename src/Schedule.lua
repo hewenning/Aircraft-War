@@ -36,5 +36,15 @@ function schedule.setup()
 
 end
 
+function schedule.pause()
+    cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.backgroundEntry)
+    cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.backgroundEntry)
+    cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.bulletEntry)
+    cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.alienAEntry)
+    cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.alienBEntry)
+    cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.alienCEntry)
+    cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.hitEntry)
+    cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.hitHeroEntry)
+end
 
 return schedule

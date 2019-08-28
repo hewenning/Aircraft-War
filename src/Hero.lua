@@ -15,7 +15,6 @@ function hero.setHPbar(num)
     local HPbar = load.hero:getChildByName("HPbar")
     -- HPbar:update(num/100)
     HPbar:setPercent(num)
- 
 end
 
 function hero.getHP()
