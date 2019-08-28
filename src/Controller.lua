@@ -8,7 +8,7 @@ function controller.initData()
     -- 血量加满 -- 
     hero.hp = 100
     -- 生命值加满 --
-    hero.life = 5
+    hero.life = 3
     load.Canvas:getChildByName("label"):getChildByName("lifevalue"):setString(hero.life)
     -- 道具初始化 --
     prop.bombnum = 5
