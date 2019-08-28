@@ -1,6 +1,6 @@
 require "schedule"
 
-load = {hero = 1, Canvas = 1, heroBox = 1,}
+load = {hero = 1, Canvas = 1, heroBox = 1, loadCanvas = 1,}
 
 function load.loadUI()
 
@@ -11,10 +11,10 @@ function load.loadUI()
     cc.Director:getInstance():replaceScene(sceneStart)
     -- 获取场景下的节点 -- 
     local children = sceneStart:getChildren()
-    load.Canvas = children[2]
+    load.loadCanvas = children[2]
 
     -- 在精灵上加载动画 --
-    local sprite = load.Canvas:getChildByName("load")
+    local sprite = load.loadCanvas:getChildByName("load")
 
     -- 加载动画 --
     local loadActionFrame = cc.Animation:create()

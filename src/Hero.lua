@@ -13,7 +13,9 @@ end
 function hero.setHPbar(num)
     --local label = load.Canvas:getChildByName("label")
     local HPbar = load.hero:getChildByName("HPbar")
-    HPbar:update(num/100)
+    -- HPbar:update(num/100)
+    HPbar:setPercent(num)
+ 
 end
 
 function hero.getHP()
@@ -33,6 +35,7 @@ function hero.refreshLife()
         hero.destroy()
         lifevalue:setString(hero.life)
         hero.hp = 100
+        hero.setHPbar(hero.hp)
     end
 end
 
@@ -48,7 +51,7 @@ function hero.destroy()
         heroDestory:addSpriteFrameWithFile(nameHero)
     end
     -- Should last 1 second. And there are 5 frames.
-    heroDestory:setDelayPerUnit(0.5 / 5)
+    heroDestory:setDelayPerUnit(1.5 / 5)
     heroDestory:setRestoreOriginalFrame(true)
     local action = cc.Animate:create(heroDestory)
     load.hero:runAction(action) 
