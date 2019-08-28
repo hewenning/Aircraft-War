@@ -59,17 +59,17 @@ end
 
 
 -- -- 更新英雄行为的函数 -- 
--- function move.update()
---     if keyboard.keyStatus[26] == 1 or keyboard.keyStatus[124] == 1 then
---         move.doleft()
---     elseif keyboard.keyStatus[27] == 1 or keyboard.keyStatus[127] == 1 then
---         move.doright()
---     elseif keyboard.keyStatus[28] == 1 or keyboard.keyStatus[146] == 1 then
---         move.doup()
---     elseif keyboard.keyStatus[29] == 1 or keyboard.keyStatus[142] == 1 then
---         move.dodown()
---     end
--- end
+function move.update()
+    if keyboard.keyStatus[26] == 1 or keyboard.keyStatus[124] == 1 then
+        move.doleft()
+    elseif keyboard.keyStatus[27] == 1 or keyboard.keyStatus[127] == 1 then
+        move.doright()
+    elseif keyboard.keyStatus[28] == 1 or keyboard.keyStatus[146] == 1 then
+        move.doup()
+    elseif keyboard.keyStatus[29] == 1 or keyboard.keyStatus[142] == 1 then
+        move.dodown()
+    end
+end
 
 
 

@@ -2,24 +2,6 @@ schedule = {}
 
 function schedule.setup()
 
-    -- controller.initData()
-    -- 打开英雄节点的默认调度器 --
-    -- load.hero:scheduleUpdateWithPriorityLua(move.update, 0)
-    load.hero:scheduleUpdateWithPriorityLua(function (dt)
-        load.hero:update(dt)
-    end, 0)
-    function load.hero:update(dt)
-        if keyboard.keyStatus[26] == 1 or keyboard.keyStatus[124] == 1 then
-            move.doleft()
-        elseif keyboard.keyStatus[27] == 1 or keyboard.keyStatus[127] == 1 then
-            move.doright()
-        elseif keyboard.keyStatus[28] == 1 or keyboard.keyStatus[146] == 1 then
-            move.doup()
-        elseif keyboard.keyStatus[29] == 1 or keyboard.keyStatus[142] == 1 then
-            move.dodown()
-        end
-    end
-
     ---------------------
     -- 关于背景的调度器 --
     --------------------- 
@@ -50,6 +32,8 @@ function schedule.setup()
     -- 创建英雄和敌机碰撞的调度器 --
     schedule.hitHeroEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(hit.checkAlienToHero, 0.5, false)
 
+    -- 英雄的调度器 --
+    schedule.heroMove = CCDirector:getInstance():getScheduler():scheduleScriptFunc(move.update, 1/60, false)
     -- 子弹飞出屏幕即销毁 --
     schedule.destoryOutBullet = CCDirector:getInstance():getScheduler():scheduleScriptFunc(bullet.destoryOutBullet, 1, false)
     -- 飞机飞出屏幕即销毁 --
@@ -58,7 +42,7 @@ function schedule.setup()
 end
 
 function schedule.pause()
-    load.hero:pause()
+    cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.heroMove)    
     cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.backgroundEntry)
     cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.backgroundEntry)
     cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.bulletEntry)
