@@ -60,8 +60,8 @@ function load.loadGame()
 
     -- 测试英雄类 --
     local heroObject = Hero.new(0, 0)
-    local temp = load.Canvas:getChildByName("hero")
-    load.hero = temp
+    -- load.hero = load.Canvas:getChildByName("hero")
+    table.insert(heroSet, heroObject)
 
     -- 获取到英雄精灵的节点 --
     -- local temp = load.Canvas:getChildByName("hero_test")

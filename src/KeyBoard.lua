@@ -1,8 +1,4 @@
-require "move"
-
-
 keyboard = {keyStatus = {},}
-
 
 function keyboard.getKeyBoardStatus()
     -- 创建新的图层 -- 

@@ -53,10 +53,10 @@ end
 
 function Bullet:getBullet()
     -- load.hero:addChild(self.node)
-    self.x = load.hero:getPositionX()
-    self.y = load.hero:getPositionY()
+    self.x = heroSet[1]:getPositionX()
+    self.y = heroSet[1]:getPositionY()
     -- print(self.x,self.y )
-    self:setPosition(self.x - 322.5, self.y - 480)
+    self:setPosition(self.x, self.y)
     self:setAnchorPoint(0.5, 0) 
 end
 
