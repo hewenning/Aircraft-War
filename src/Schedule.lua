@@ -58,6 +58,7 @@ function schedule.setup()
 end
 
 function schedule.pause()
+    load.hero:pause()
     cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.backgroundEntry)
     cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.backgroundEntry)
     cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.bulletEntry)
