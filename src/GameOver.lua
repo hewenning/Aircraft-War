@@ -26,7 +26,6 @@ function gameover.mainScene()
             -- local str = "You have "..prop.bomnum.."bombs.Clear all,and get G3000."
             --cc.Director:getInstance():resume()
             load.loadGame()
-            --schedule.setup()
         end
     end)
 

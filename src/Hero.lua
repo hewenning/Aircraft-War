@@ -1,7 +1,5 @@
 hero = { hp = 100, life = 3,}
 
--- local hp =  100
-
 function hero.getBox()
     local heroBox =  load.hero:getBoundingBox()
     heroBox.x = load.hero:getPositionX()

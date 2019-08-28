@@ -26,7 +26,20 @@ function Bullet:ctor(x, y)
     -- 构造的时候把对象大小的矩形保存 --
     local box = self:getChildByName("bullet"):getParent():getBoundingBox()
     self.box = box
+
+
+    -- -- 构造的时候把定时器打开 --
+    -- self:scheduleUpdateWithPriorityLua(function (dt)
+    --     self:update(dt)
+    -- end, 0)
+
 end
+
+-- function Bullet:updata(dt)
+--     if self:getPositionY() >= 1500 then
+--         self:removeFromParent()
+--     end 
+-- end
 
 function Bullet:refreshBox()
     local box = self:getChildByName("bullet"):getParent():getBoundingBox()
@@ -73,39 +86,50 @@ end
 
 
 -- 检测空格键或则回车按下的时候 --
-function bullet.update()
+function bullet.createBullet()
     -- print(">>>>>>")
     if keyboard.keyStatus[59] == 1 or keyboard.keyStatus[164] == 1 then
-        -- local newbullet = Bullet.new(0, 0)
-        -- newbullet:getBullet()
-        -- -- print(newbullet.box)
-        -- newbullet:play()
+        
+        local newbullet = Bullet.new(0, 0)
+        newbullet:getBullet()
+        newbullet:play()
+        table.insert(bullet.set, newbullet)
+
         -- 不断的把子弹存入新的Table里面 --
-        if bullet.Tag <= 20 then
-            bullet.set[bullet.Tag] = Bullet.new(0, 0)
-            bullet.set[bullet.Tag]:getBullet()
-            bullet.set[bullet.Tag]:play()
-            bullet.Tag = bullet.Tag + 1
-        elseif bullet.Tag == 21 then
-            if i < 20 then
-                if bullet.set[i] ~= nil then
-                    bullet.set[i]:destroy()
-                    bullet.set[i] = nil
-                end
-                bullet.set[i] = Bullet.new(0, 0)
-                bullet.set[i]:getBullet()
-                bullet.set[i]:play()
-                i = i + 1
-            elseif i == 20  then
-                if bullet.set[i] ~= nil then
-                    bullet.set[i]:destroy()
-                    bullet.set[i] = nil
-                end
-                bullet.set[i] = Bullet.new(0, 0)
-                bullet.set[i]:getBullet()
-                bullet.set[i]:play()
-                i = 1
-            end
+        -- if bullet.Tag <= 20 then
+        --     bullet.set[bullet.Tag] = Bullet.new(0, 0)
+        --     bullet.set[bullet.Tag]:getBullet()
+        --     bullet.set[bullet.Tag]:play()
+        --     bullet.Tag = bullet.Tag + 1
+        -- elseif bullet.Tag == 21 then
+        --     if i < 20 then
+        --         if bullet.set[i] ~= nil then
+        --             bullet.set[i]:destroy()
+        --             bullet.set[i] = nil
+        --         end
+        --         bullet.set[i] = Bullet.new(0, 0)
+        --         bullet.set[i]:getBullet()
+        --         bullet.set[i]:play()
+        --         i = i + 1
+        --     elseif i == 20  then
+        --         if bullet.set[i] ~= nil then
+        --             bullet.set[i]:destroy()
+        --             bullet.set[i] = nil
+        --         end
+        --         bullet.set[i] = Bullet.new(0, 0)
+        --         bullet.set[i]:getBullet()
+        --         bullet.set[i]:play()
+        --         i = 1
+        --     end
+        -- end
+    end
+end
+
+function bullet.destoryOutBullet()
+    for i, k in pairs(bullet.set) do
+        if k:getPositionY() >= 500 then
+            k:removeFromParent()
+            bullet.set[i] = nil
         end
     end
 end
