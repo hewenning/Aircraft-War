@@ -7,7 +7,7 @@ require "alien"
 require "hit"
 require "controller"
 require "score"
-require "hero"
+-- require "hero"
 require "controller"
 require "gameover"
 require "archive"
@@ -15,6 +15,7 @@ require "prop"
 require "mall"
 require "bag"
 require "menu"
+require "HeroClass.lua"
 
 -- cclog–≈œ¢ --
 cclog = function(...)

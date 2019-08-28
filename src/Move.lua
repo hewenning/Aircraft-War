@@ -2,12 +2,6 @@ move = {}
 
 --用来处理英雄移动的函数 --
 function move.doleft()
-    -- print("----------------------------------------------------")
-    -- print("come in left")
-    -- print(load.hero:getPositionX(), load.hero:getPositionY())
-    -- print(load.hero:getBoundingBox().x, load.hero:getBoundingBox().y)
-    -- print("----------------------------------------------------")
-    -- load.hero:runAction(cc.MoveBy:create(0.1, cc.p(-5, 0)))
     if load.hero:getPositionX() > 60 then
         load.hero:runAction(cc.MoveBy:create(0.1, cc.p(-6, 0)))  
     elseif load.hero:getPositionX() <= 60 then
@@ -16,12 +10,6 @@ function move.doleft()
 end
 
 function move.doright()
-    -- print("----------------------------------------------------")
-    -- print("come in right")
-    -- print(load.hero:getPositionX(), load.hero:getPositionY())
-    -- print(load.hero:getBoundingBox().x, load.hero:getBoundingBox().y)
-    -- print("----------------------------------------------------")
-    -- load.hero:runAction(cc.MoveBy:create(0.1, cc.p(5, 0)))
     if load.hero:getPositionX() < 580 then
         load.hero:runAction(cc.MoveBy:create(0.1, cc.p(6, 0)))  
     elseif load.hero:getPositionX() >= 580 then
@@ -30,12 +18,6 @@ function move.doright()
 end
 
 function move.doup()
-    -- print("----------------------------------------------------")
-    -- print("come in up")
-    -- print(load.hero:getPositionX(), load.hero:getPositionY())
-    -- print(load.hero:getBoundingBox().x, load.hero:getBoundingBox().y)
-    -- print("----------------------------------------------------")
-    -- load.hero:runAction(cc.MoveBy:create(0.1, cc.p(0, 5)))
     if load.hero:getPositionY() < 900 then
         load.hero:runAction(cc.MoveBy:create(0.1, cc.p(0, 6)))  
     elseif load.hero:getPositionX() >= 900 then
@@ -44,12 +26,6 @@ function move.doup()
 end
 
 function move.dodown()
-    -- print("----------------------------------------------------")
-    -- print("come in down")
-    -- print(load.hero:getPositionX(), load.hero:getPositionY())
-    -- print(load.hero:getBoundingBox().x, load.hero:getBoundingBox().y)
-    -- print("----------------------------------------------------")
-    -- load.hero:runAction(cc.MoveBy:create(0.1, cc.p(0, -5)))
     if load.hero:getPositionY() > 180 then
         load.hero:runAction(cc.MoveBy:create(0.1, cc.p(0, -6)))  
     elseif load.hero:getPositionX() <= 180 then

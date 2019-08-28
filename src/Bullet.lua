@@ -1,9 +1,5 @@
-transition = require "cocos.framework.transition"
-
 bullet = {set = {}, Tag = 0,}
-
-
-local i = 1 
+ 
 
 Bullet = class("Bullet",function ()
     return cc.Node:create()
@@ -19,12 +15,11 @@ function Bullet:ctor(x, y)
     local scene =  creatorReader:getSceneGraph()
     local content = scene:getChildByName("bullet")
     content:removeFromParent(false)
-
     self:addChild(content)
     load.Canvas:addChild(self)
 
     -- 构造的时候把对象大小的矩形保存 --
-    local box = self:getChildByName("bullet"):getParent():getBoundingBox()
+    local box = self:getBoundingBox()
     self.box = box
 
 
@@ -42,7 +37,7 @@ end
 -- end
 
 function Bullet:refreshBox()
-    local box = self:getChildByName("bullet"):getParent():getBoundingBox()
+    local box = self:getBoundingBox()
     -- local box = {}
     box.width = 9
     box.height = 21
@@ -83,7 +78,6 @@ end
 -- 检测空格键或则回车按下的时候 --
 function bullet.createBullet()
     if keyboard.keyStatus[59] == 1 or keyboard.keyStatus[164] == 1 then
-        
         local newbullet = Bullet.new(0, 0)
         newbullet:getBullet()
         newbullet:play()
