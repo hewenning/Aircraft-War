@@ -8,6 +8,8 @@ function menu.mainButton()
     button:addTouchEventListener(function(sender, eventType)
         if (0 == eventType)  then
             print("pressed")
+            -- 在这里暂停所有的动画 --
+            
             menu.itemsChoose()
         elseif (1 == eventType)  then
             print("move")

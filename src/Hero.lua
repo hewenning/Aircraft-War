@@ -1,7 +1,5 @@
 hero = { hp = 100, life = 3,}
 
--- local hp =  100
-
 function hero.getBox()
     local heroBox =  load.hero:getBoundingBox()
     heroBox.x = load.hero:getPositionX()
@@ -15,7 +13,6 @@ function hero.setHPbar(num)
     local HPbar = load.hero:getChildByName("HPbar")
     -- HPbar:update(num/100)
     HPbar:setPercent(num)
- 
 end
 
 function hero.getHP()
