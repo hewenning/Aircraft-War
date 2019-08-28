@@ -34,4 +34,26 @@ function controller.keySwitch()
     end
 end
 
+function controller.setBulletAndAlienPause()
+    schedule.pause()
+    for _, k in pairs(alien.set) do
+        k:pause()
+    end
+    for _, v in pairs(bullet.set) do
+        v:pause()
+    end
+end
+
+function controller.setBulletAndAlienResume()
+    schedule.setup()
+    for _, k in pairs(alien.set) do
+        k:resume()
+
+    end
+    for _, v in pairs(bullet.set) do
+        v:resume()	
+
+    end
+end
+
 return controller

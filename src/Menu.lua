@@ -9,7 +9,7 @@ function menu.mainButton()
         if (0 == eventType)  then
             print("pressed")
             -- 在这里暂停所有的动画 --
-            
+            controller.setBulletAndAlienPause()
             menu.itemsChoose()
         elseif (1 == eventType)  then
             print("move")
@@ -75,6 +75,7 @@ function menu.itemsChoose()
         if (0 == eventType)  then
             print("Restart button pressed.")
             controller.initData()
+            schedule.setup()
             itemsButton:removeFromParent()
         end
     end)
@@ -83,6 +84,7 @@ function menu.itemsChoose()
     continueButton:addTouchEventListener(function(sender, eventType)
         if (0 == eventType)  then
             print("Continue button pressed.")
+            controller.setBulletAndAlienResume()
             itemsButton:removeFromParent()
         end
     end)
