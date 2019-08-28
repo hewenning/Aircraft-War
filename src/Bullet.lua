@@ -68,18 +68,13 @@ end
 function Bullet:play()
     local action = cc.Sequence:create( 
         {
-            cc.MoveBy:create(2, cc.p(0, 1000)), 
-            -- cc.CallFunc:create( function()
-            --     self:removeFromParent()
-            --     print("The bullet has been cleared.")   
-            -- end ),          
+            cc.MoveBy:create(2, cc.p(0, 1000)),        
         }
     )
     self:runAction(action)
 end
 
 function Bullet:destroy()
-    -- load.hero:addChild(self.node)
     self:removeFromParent()
     print("The bullet has been cleared.") 
 end
@@ -87,41 +82,12 @@ end
 
 -- 检测空格键或则回车按下的时候 --
 function bullet.createBullet()
-    -- print(">>>>>>")
     if keyboard.keyStatus[59] == 1 or keyboard.keyStatus[164] == 1 then
         
         local newbullet = Bullet.new(0, 0)
         newbullet:getBullet()
         newbullet:play()
         table.insert(bullet.set, newbullet)
-
-        -- 不断的把子弹存入新的Table里面 --
-        -- if bullet.Tag <= 20 then
-        --     bullet.set[bullet.Tag] = Bullet.new(0, 0)
-        --     bullet.set[bullet.Tag]:getBullet()
-        --     bullet.set[bullet.Tag]:play()
-        --     bullet.Tag = bullet.Tag + 1
-        -- elseif bullet.Tag == 21 then
-        --     if i < 20 then
-        --         if bullet.set[i] ~= nil then
-        --             bullet.set[i]:destroy()
-        --             bullet.set[i] = nil
-        --         end
-        --         bullet.set[i] = Bullet.new(0, 0)
-        --         bullet.set[i]:getBullet()
-        --         bullet.set[i]:play()
-        --         i = i + 1
-        --     elseif i == 20  then
-        --         if bullet.set[i] ~= nil then
-        --             bullet.set[i]:destroy()
-        --             bullet.set[i] = nil
-        --         end
-        --         bullet.set[i] = Bullet.new(0, 0)
-        --         bullet.set[i]:getBullet()
-        --         bullet.set[i]:play()
-        --         i = 1
-        --     end
-        -- end
     end
 end
 
