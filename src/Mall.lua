@@ -42,10 +42,10 @@ function mall.propFirstBuy()
             print("PropbombAdd button pressed.")
             local maxBuy = math.floor(score.value/5000)
             if maxBuy >=1 then
-                if mall.bombBuyNum <= maxBuy + 1 then
+                if mall.bombBuyNum <= maxBuy - 1 then
                     mall.bombBuyNum = mall.bombBuyNum + 1
-                    score.value = score.value - 5000
-                    score.refreshScoreValue()
+                    --score.value = score.value - 5000
+                    --score.refreshScoreValue()
                     propbombNum:setString(mall.bombBuyNum)
                 end
             end
@@ -58,8 +58,8 @@ function mall.propFirstBuy()
             print("PropbombSub button pressed.")
             if mall.bombBuyNum >0 then
                 mall.bombBuyNum = mall.bombBuyNum - 1
-                score.value = score.value + 5000
-                score.refreshScoreValue()
+                --score.value = score.value + 5000
+                --score.refreshScoreValue()
                 propbombNum:setString(mall.bombBuyNum)
             end
         end
@@ -70,6 +70,8 @@ function mall.propFirstBuy()
         if (0 == eventType)  then
             print("PropbombEnter button pressed.")
             prop.bombnum = prop.bombnum + mall.bombBuyNum
+            score.value = score.value - mall.bombBuyNum * 5000
+            score.refreshScoreValue()
             mall.bombBuyNum = 0
             propbombNum:setString(mall.bombBuyNum)
             prop.refreshBombNum()
