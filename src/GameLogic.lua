@@ -67,7 +67,8 @@ end
 function gamelogic.processlogic()
     -- 更新背景 --
     gamelogic.backgroundScroll()
-    
+    -- 英雄移动 --
+    heroSet[1]:update()
     -- 在这里不断的创建敌机 --
     gamelogic.TimerA = gamelogic.TimerA + 1
     gamelogic.TimerB = gamelogic.TimerB + 1
@@ -83,19 +84,16 @@ function gamelogic.processlogic()
     if gamelogic.TimerC == 600 then
         gamelogic.createC()
         gamelogic.TimerC = 0
-    end
-    
+    end  
     -- 处理子弹的创建 --
     gamelogic.TimerBullet = gamelogic.TimerBullet + 1
     if gamelogic.TimerBullet == 6 then
         gamelogic.createBullet()
         gamelogic.TimerBullet = 0    
-    end
-    
+    end    
     -- 处理子弹和敌机的碰撞事件 -- 
     hit.checkBulletToAlien()
-    hit.checkAlienToHero()
-    
+    hit.checkAlienToHero() 
     -- 子弹和英雄销毁 --
     gamelogic.destoryOutBullet()
     gamelogic.destoryOutAlien()

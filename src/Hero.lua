@@ -25,12 +25,12 @@ function Hero:ctor(x, y)
 
     -- 构造的时候把定时器打开 --
     -- self:scheduleUpdate(self:update(dt)
-	self:scheduleUpdateWithPriorityLua(function(dt)
-		self:update(dt)
-	end, 1)
+	-- self:scheduleUpdateWithPriorityLua(function(dt)
+	-- 	self:update(dt)
+	-- end, 1)
 end
 
-function Hero:update(dt)
+function Hero:update()
     if keyboard.keyStatus[26] == 1 or keyboard.keyStatus[124] == 1 then
         self:doLeft()
     elseif keyboard.keyStatus[27] == 1 or keyboard.keyStatus[127] == 1 then
