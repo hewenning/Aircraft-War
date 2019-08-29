@@ -71,8 +71,9 @@ function load.loadGame()
     -------------------
     -- 启动调度器设置 --
     -------------------
-    schedule.setup()
-
+    -- schedule.setup()
+    gamelogic.setup()
+    
     -------------------
     -- 添加菜单的按钮 --
     -------------------

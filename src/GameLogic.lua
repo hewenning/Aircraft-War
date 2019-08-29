@@ -1,4 +1,4 @@
-gamelogic = {}
+gamelogic = {TimerA = 0, TimerB =0, TimerC =0,}
 -------------------
 -- 调度器有关设置 --
 -------------------
@@ -67,18 +67,35 @@ end
 function gamelogic.processlogic()
     -- 更新背景 --
     gamelogic.backgroundScroll()
+    
     -- 在这里不断的创建敌机 --
-    gamelogic.createA()
-    gamelogic.createB()
-    gamelogic.createC()
+    gamelogic.TimerA = gamelogic.TimerA + 1
+    gamelogic.TimerB = gamelogic.TimerB + 1
+    gamelogic.TimerC = gamelogic.TimerC + 1
+    if gamelogic.TimerA == 60 then
+        gamelogic.createA()
+        gamelogic.TimerA = 0
+    end
+    if gamelogic.TimerB == 180 then
+        gamelogic.createB()
+        gamelogic.TimerB = 0
+    end
+    if gamelogic.TimerC == 600 then
+        gamelogic.createC()
+        gamelogic.TimerC = 0
+    end
+    
     -- 处理子弹类别的创建和销毁 --
     gamelogic.createBullet()
+    
     -- 处理子弹和敌机的碰撞事件 -- 
     hit.checkBulletToAlien()
+    
     -- 处理子弹和英雄的碰撞事件 --
     hit.checkAlienToHero()
     -- 子弹销毁 --
     gamelogic.destoryOutBullet()
+    
     -- 敌机销毁 --
     gamelogic.destoryOutAlien()
 end
