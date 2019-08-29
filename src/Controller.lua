@@ -6,10 +6,11 @@ function controller.initData()
     score.value = 0
     load.Canvas:getChildByName("label"):getChildByName("scorevalue"):setString(score.value)
     -- 血量加满 -- 
-    hero.hp = 100
-    -- 生命值加满 --
-    hero.life = 3
-    load.Canvas:getChildByName("label"):getChildByName("lifevalue"):setString(hero.life)
+    -- hero.hp = 100
+    heroSet[1]:setHP(100)
+    -- 生命数加满 --
+    heroSet[1]:setLife(3)
+    --load.Canvas:getChildByName("label"):getChildByName("lifevalue"):setString(hero.life)
     -- 道具初始化 --
     prop.bombnum = 5
     local bombnumlabel = load.Canvas:getChildByName("label"):getChildByName("bombnumlabel"):setString(prop.bombnum)
@@ -24,6 +25,7 @@ function controller.initData()
     alien.Tag = 0
     bullet.set = {}
     bullet.Tag = 0
+
     -- 所有的节点全部清空 --
     -- to do
 end

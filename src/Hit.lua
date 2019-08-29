@@ -65,15 +65,16 @@ function hit.checkAlienToHero()
         ----------------------------
         -- print(load.hero:getBoundingBox().x, load.hero:getBoundingBox().y)
         alienObject:refreshBox()
+        heroSet[1]:refreshBox()
         local alienBox = alienObject:getBox()
-        alienBox.x = alienBox.x + 320
-        alienBox.y = alienBox.y + 520
-        if cc.rectIntersectsRect(alienObject:getBox(), hero.getBox()) then
+        -- alienBox.x = alienBox.x + 320
+        -- alienBox.y = alienBox.y + 520
+        if cc.rectIntersectsRect(alienObject:getBox(), heroSet[1]:getBox()) then
             -- print(hero.getBox().x, hero.getBox().y)
-            hero.refreshLife()
+            heroSet[1]:refreshLife()
             alienObject:setHP(1)
             alienObject:destroy()
-            if hero.getLife() == -1 then
+            if heroSet[1]:getLife() == -1 then
                 gameover.mainScene() 
             end
             alien.set[i] = nil

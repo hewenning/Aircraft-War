@@ -62,8 +62,19 @@ function Hero:setHPbar(num)
     HPbar:setPercent(num)
 end
 
+function Hero:setHP(num)
+    self.hp = num
+end
+
 function Hero:getHP()
     return self.hp
+end
+
+function Hero:setLife(num)
+    self.life = num
+    local label = load.Canvas:getChildByName("label")
+    local lifevalue = label:getChildByName("lifevalue")
+    lifevalue:setString(self.life)
 end
 
 -- 血量减为0的时候刷新血量,并且把生命值减1 -- 

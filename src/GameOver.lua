@@ -1,8 +1,13 @@
 gameover ={Canvas = 0,}
 
 function gameover.mainScene()
+    local scoreMax = score.value
     schedule.pause()
     controller.initData()
+    -- ÒÆ³ýµÐ»ú ---
+    heroSet[1]:removeFromParent()
+    heroSet[1] = nil
+    heroSet = {}
     --cc.Director:getInstance():pause()
     --schedule.pause()
     local overReader = creator.CreatorReader:createWithFilename('Resources/creator/Scene/gameover.ccreator')
@@ -16,8 +21,8 @@ function gameover.mainScene()
 
     local maxscore = gameover.Canvas:getChildByName("maxscore")
     local maxhistory = gameover.Canvas:getChildByName("maxhistory")
-    maxscore:setString(score.value)
-    maxhistory:setString(score.value)
+    maxscore:setString(scoreMax)
+    maxhistory:setString(scoreMax)
 
     local restart = gameover.Canvas:getChildByName("restart")
     restart:addTouchEventListener(function(sender, eventType)
