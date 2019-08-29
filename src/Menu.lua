@@ -75,7 +75,7 @@ function menu.itemsChoose()
         if (0 == eventType)  then
             print("Restart button pressed.")
             controller.initData()
-            schedule.setup()
+            load.loadGame()
             itemsButton:removeFromParent()
         end
     end)
