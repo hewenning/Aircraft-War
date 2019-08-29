@@ -225,37 +225,37 @@ function Alien:destroy()
     end
 end
 
-function alien.createA()
-    local alienA = Alien.new(alien.alienAPath, alien.A, 1, 5)
-    alienA:randomPosition()
-    alienA:getAlien()
-    alienA:play()
-    table.insert(alien.set, alienA)
-end
+-- function alien.createA()
+--     local alienA = Alien.new(alien.alienAPath, alien.A, 1, 5)
+--     alienA:randomPosition()
+--     alienA:getAlien()
+--     alienA:play()
+--     table.insert(alien.set, alienA)
+-- end
 
-function alien.createB()
-    local alienB = Alien.new(alien.alienBPath, alien.B, 3, 10)
-    alienB:randomPosition()
-    alienB:getAlien()
-    alienB:play()
-    table.insert(alien.set, alienB) 
-end
+-- function alien.createB()
+--     local alienB = Alien.new(alien.alienBPath, alien.B, 3, 10)
+--     alienB:randomPosition()
+--     alienB:getAlien()
+--     alienB:play()
+--     table.insert(alien.set, alienB) 
+-- end
 
-function alien.createC()
-    local alienC = Alien.new(alien.alienCPath, alien.C, 10, 15)
-    alienC:randomPosition()
-    alienC:getAlien()
-    alienC:play()
-    table.insert(alien.set, alienC)
-end
+-- function alien.createC()
+--     local alienC = Alien.new(alien.alienCPath, alien.C, 10, 15)
+--     alienC:randomPosition()
+--     alienC:getAlien()
+--     alienC:play()
+--     table.insert(alien.set, alienC)
+-- end
 
-function alien.destoryOutAlien()
-    for i,v in pairs(alien.set) do
-        if v:getPositionY() <= -600 then
-            v:removeFromParent()
-            alien.set[i] = nil
-        end
-    end
-end
+-- function alien.destoryOutAlien()
+--     for i,v in pairs(alien.set) do
+--         if v:getPositionY() <= -600 then
+--             v:removeFromParent()
+--             alien.set[i] = nil
+--         end
+--     end
+-- end
 
 return alien

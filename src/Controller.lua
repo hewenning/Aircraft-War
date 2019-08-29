@@ -35,7 +35,8 @@ function controller.keySwitch()
 end
 
 function controller.setBulletAndAlienPause()
-    schedule.shutdown()
+    -- schedule.shutdown()
+    gamelogic.shutdown()
     for _, k in pairs(alien.set) do
         k:pause()
     end
@@ -46,7 +47,8 @@ function controller.setBulletAndAlienPause()
 end
 
 function controller.setBulletAndAlienResume()
-    schedule.setup()
+    --schedule.setup()
+    gamelogic.setup()
     for _, k in pairs(alien.set) do
         k:resume()
 

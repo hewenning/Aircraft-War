@@ -4,25 +4,7 @@ function hit.checkBulletToAlien()
     -- print("hit >>>>>>>>>>>>>>>>>>")
     -- if table.getn(alien.set) ~= 0 and table.getn(bullet.set) ~= 0 then
         for indexAlien, alienObj in pairs(alien.set) do
-            -- if alienObj ~= nil then
-                ----------------------------
-                -- 在这里判断是否和英雄碰撞 --
-                ----------------------------
-                --print(load.hero:getBoundingBox().x, load.hero:getBoundingBox().y)
-                -- alienObj:refreshBox()
-                -- if cc.rectIntersectsRect(alienObj:getBox(), hero.getBox()) then
-                --     -- print(hero.getBox().x, hero.getBox().y)
-                --     -- 敌人和飞机同归于尽 --
-                --     alienObj:setHP(1)
-                --     alienObj:destroy()
-                --     alien.set[indexAlien] = nil
-                --     -- 飞机死亡 --
-                --     hero.destroy()
-                --     --print(hero.getHP())
-                --     -- hero.getHP()
-                --     hero.getLife()
-                --     break
-                -- end 
+            -- if alienObj ~= nil then 
                 ----------------------------
                 -- 在这里判断是否和子弹碰撞 --
                 ----------------------------

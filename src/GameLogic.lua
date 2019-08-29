@@ -1,4 +1,4 @@
-gamelogic = {TimerA = 0, TimerB =0, TimerC =0,}
+gamelogic = {TimerA = 0, TimerB =0, TimerC =0, TimerBullet = 0,}
 -------------------
 -- 调度器有关设置 --
 -------------------
@@ -85,18 +85,19 @@ function gamelogic.processlogic()
         gamelogic.TimerC = 0
     end
     
-    -- 处理子弹类别的创建和销毁 --
-    gamelogic.createBullet()
+    -- 处理子弹的创建 --
+    gamelogic.TimerBullet = gamelogic.TimerBullet + 1
+    if gamelogic.TimerBullet == 6 then
+        gamelogic.createBullet()
+        gamelogic.TimerBullet = 0    
+    end
     
     -- 处理子弹和敌机的碰撞事件 -- 
     hit.checkBulletToAlien()
-    
-    -- 处理子弹和英雄的碰撞事件 --
     hit.checkAlienToHero()
-    -- 子弹销毁 --
-    gamelogic.destoryOutBullet()
     
-    -- 敌机销毁 --
+    -- 子弹和英雄销毁 --
+    gamelogic.destoryOutBullet()
     gamelogic.destoryOutAlien()
 end
 
@@ -105,7 +106,7 @@ function gamelogic.setup()
 end
 
 function gamelogic.shutdown()
-    CCDirector:sharedDirector():getScheduler():unscheduleScriptFunc(gamelogic.processlogic)
+    CCDirector:sharedDirector():getScheduler():unscheduleScriptEntry(gamelogic.gamelogicSchedule)
 end
 
 return gamelogic

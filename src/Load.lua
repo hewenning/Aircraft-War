@@ -60,20 +60,14 @@ function load.loadGame()
 
     -- 测试英雄类 --
     local heroObject = Hero.new(0, 0)
-    -- load.hero = load.Canvas:getChildByName("hero")
     table.insert(heroSet, heroObject)
-
-    -- 获取到英雄精灵的节点 --
-    -- local temp = load.Canvas:getChildByName("hero_test")
-    -- load.hero = temp
-
 
     -------------------
     -- 启动调度器设置 --
     -------------------
     -- schedule.setup()
     gamelogic.setup()
-    
+
     -------------------
     -- 添加菜单的按钮 --
     -------------------
