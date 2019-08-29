@@ -27,7 +27,7 @@ function Hero:ctor(x, y)
     -- self:scheduleUpdate(self:update(dt)
 	self:scheduleUpdateWithPriorityLua(function(dt)
 		self:update(dt)
-	end, 0)
+	end, 1)
 end
 
 function Hero:update(dt)

@@ -22,19 +22,7 @@ function Bullet:ctor(x, y)
     local box = self:getBoundingBox()
     self.box = box
 
-
-    -- -- 构造的时候把定时器打开 --
-    -- self:scheduleUpdateWithPriorityLua(function (dt)
-    --     self:update(dt)
-    -- end, 0)
-
 end
-
--- function Bullet:updata(dt)
---     if self:getPositionY() >= 1500 then
---         self:removeFromParent()
---     end 
--- end
 
 function Bullet:refreshBox()
     local box = self:getBoundingBox()

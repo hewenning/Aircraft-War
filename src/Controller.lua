@@ -58,4 +58,5 @@ function controller.setBulletAndAlienResume()
     heroSet[1]:resume()
 end
 
+
 return controller

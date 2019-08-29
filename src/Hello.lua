@@ -15,6 +15,7 @@ require "mall"
 require "bag"
 require "menu"
 require "hero"
+require "gameover"
 
 -- cclog–≈œ¢ --
 cclog = function(...)
