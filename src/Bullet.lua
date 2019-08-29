@@ -56,7 +56,7 @@ function Bullet:getBullet()
     self.x = heroSet[1]:getPositionX()
     self.y = heroSet[1]:getPositionY()
     -- print(self.x,self.y )
-    self:setPosition(self.x, self.y)
+    self:setPosition(self.x + 50, self.y)
     self:setAnchorPoint(0.5, 0) 
 end
 
