@@ -7,7 +7,6 @@ require "alien"
 require "hit"
 require "controller"
 require "score"
-require "hero"
 require "controller"
 require "gameover"
 require "archive"
@@ -15,6 +14,7 @@ require "prop"
 require "mall"
 require "bag"
 require "menu"
+require "hero"
 
 -- cclog–≈œ¢ --
 cclog = function(...)

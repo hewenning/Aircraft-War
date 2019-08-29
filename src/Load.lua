@@ -57,9 +57,15 @@ function load.loadGame()
     ------------------
     --把键盘事件添加进场景
     scene:addChild(keyboard.getKeyBoardStatus())
+
+    -- 测试英雄类 --
+    local heroObject = Hero.new(0, 0)
+    -- load.hero = load.Canvas:getChildByName("hero")
+    table.insert(heroSet, heroObject)
+
     -- 获取到英雄精灵的节点 --
-    local temp = load.Canvas:getChildByName("hero")
-    load.hero = temp
+    -- local temp = load.Canvas:getChildByName("hero_test")
+    -- load.hero = temp
 
 
     -------------------

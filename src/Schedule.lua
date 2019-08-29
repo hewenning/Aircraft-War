@@ -33,7 +33,7 @@ function schedule.setup()
     schedule.hitHeroEntry = CCDirector:getInstance():getScheduler():scheduleScriptFunc(hit.checkAlienToHero, 0.5, false)
 
     -- 英雄的调度器 --
-    schedule.heroMove = CCDirector:getInstance():getScheduler():scheduleScriptFunc(move.update, 1/60, false)
+    --schedule.heroMove = CCDirector:getInstance():getScheduler():scheduleScriptFunc(move.update, 1/60, false)
     -- 子弹飞出屏幕即销毁 --
     schedule.destoryOutBullet = CCDirector:getInstance():getScheduler():scheduleScriptFunc(bullet.destoryOutBullet, 1, false)
     -- 飞机飞出屏幕即销毁 --
@@ -42,7 +42,7 @@ function schedule.setup()
 end
 
 function schedule.pause()
-    cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.heroMove)    
+    --cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.heroMove)    
     cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.backgroundEntry)
     cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.backgroundEntry)
     cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.bulletEntry)
