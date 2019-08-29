@@ -50,7 +50,7 @@ function hit.checkAlienToHero()
         heroSet[1]:refreshBox()
         local alienBox = alienObject:getBox()
         -- alienBox.x = alienBox.x + 320
-        -- alienBox.y = alienBox.y + 520
+        alienBox.y = alienBox.y + 123
         if cc.rectIntersectsRect(alienObject:getBox(), heroSet[1]:getBox()) then
             -- print(hero.getBox().x, hero.getBox().y)
             heroSet[1]:refreshLife()

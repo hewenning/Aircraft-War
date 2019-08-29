@@ -26,6 +26,12 @@ function controller.initData()
         heroSet[i] = nil
     end
     heroSet = {}
+
+    -- 定时器计数器置0 --
+    gamelogic.TimerA = 0
+    gamelogic.TimerB = 0
+    gamelogic.TimerC = 0
+    gamelogic.TimerBullet = 0
 end
 
 function controller.keySwitch()
