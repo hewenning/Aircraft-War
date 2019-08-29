@@ -26,6 +26,12 @@ function controller.initData()
         heroSet[i] = nil
     end
     heroSet = {}
+
+    -- 定时器计数器置0 --
+    gamelogic.TimerA = 0
+    gamelogic.TimerB = 0
+    gamelogic.TimerC = 0
+    gamelogic.TimerBullet = 0
 end
 
 function controller.keySwitch()
@@ -35,7 +41,8 @@ function controller.keySwitch()
 end
 
 function controller.setBulletAndAlienPause()
-    schedule.shutdown()
+    -- schedule.shutdown()
+    gamelogic.shutdown()
     for _, k in pairs(alien.set) do
         k:pause()
     end
@@ -46,7 +53,8 @@ function controller.setBulletAndAlienPause()
 end
 
 function controller.setBulletAndAlienResume()
-    schedule.setup()
+    --schedule.setup()
+    gamelogic.setup()
     for _, k in pairs(alien.set) do
         k:resume()
 
@@ -57,5 +65,6 @@ function controller.setBulletAndAlienResume()
     end
     heroSet[1]:resume()
 end
+
 
 return controller

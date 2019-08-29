@@ -1,8 +1,10 @@
 gameover ={Canvas = 0,}
 
 function gameover.mainScene()
+    -- 取出分数值 --
     local scoreMax = score.value
-    schedule.shutdown()
+    -- schedule.shutdown()
+    gamelogic.shutdown()
     controller.initData()
     -- controller.setBulletAndAlienPause()
     local overReader = creator.CreatorReader:createWithFilename('Resources/creator/Scene/gameover.ccreator')
@@ -14,6 +16,7 @@ function gameover.mainScene()
     local children = overScene:getChildren()
     gameover.Canvas = children[2]
 
+    -- 分数值刷上去 --
     local maxscore = gameover.Canvas:getChildByName("maxscore")
     local maxhistory = gameover.Canvas:getChildByName("maxhistory")
     maxscore:setString(scoreMax)

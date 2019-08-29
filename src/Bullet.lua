@@ -22,19 +22,7 @@ function Bullet:ctor(x, y)
     local box = self:getBoundingBox()
     self.box = box
 
-
-    -- -- 构造的时候把定时器打开 --
-    -- self:scheduleUpdateWithPriorityLua(function (dt)
-    --     self:update(dt)
-    -- end, 0)
-
 end
-
--- function Bullet:updata(dt)
---     if self:getPositionY() >= 1500 then
---         self:removeFromParent()
---     end 
--- end
 
 function Bullet:refreshBox()
     local box = self:getBoundingBox()
@@ -75,24 +63,24 @@ function Bullet:destroy()
 end
 
 
--- 检测空格键或则回车按下的时候 --
-function bullet.createBullet()
-    if keyboard.keyStatus[59] == 1 or keyboard.keyStatus[164] == 1 then
-        local newbullet = Bullet.new(0, 0)
-        newbullet:getBullet()
-        newbullet:play()
-        table.insert(bullet.set, newbullet)
-    end
-end
+-- -- 检测空格键或则回车按下的时候 --
+-- function bullet.createBullet()
+--     if keyboard.keyStatus[59] == 1 or keyboard.keyStatus[164] == 1 then
+--         local newbullet = Bullet.new(0, 0)
+--         newbullet:getBullet()
+--         newbullet:play()
+--         table.insert(bullet.set, newbullet)
+--     end
+-- end
 
-function bullet.destoryOutBullet()
-    for i, k in pairs(bullet.set) do
-        if k:getPositionY() >= 500 then
-            k:removeFromParent()
-            bullet.set[i] = nil
-        end
-    end
-end
+-- function bullet.destoryOutBullet()
+--     for i, k in pairs(bullet.set) do
+--         if k:getPositionY() >= 500 then
+--             k:removeFromParent()
+--             bullet.set[i] = nil
+--         end
+--     end
+-- end
 
 return bullet
 
