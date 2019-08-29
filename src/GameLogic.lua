@@ -100,11 +100,11 @@ function gamelogic.processlogic()
 end
 
 function gamelogic.setup()
-    gamelogic.gamelogicSchedule = CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(gamelogic.processlogic, 1/60, false)
+    gamelogic.gamelogicSchedule = CCDirector:getInstance():getScheduler():scheduleScriptFunc(gamelogic.processlogic, 1/60, false)
 end
 
 function gamelogic.shutdown()
-    CCDirector:sharedDirector():getScheduler():unscheduleScriptEntry(gamelogic.gamelogicSchedule)
+    CCDirector:getInstance():getScheduler():unscheduleScriptEntry(gamelogic.gamelogicSchedule)
 end
 
 return gamelogic
