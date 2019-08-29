@@ -5,12 +5,6 @@ function controller.initData()
     -- 分数置空 --
     score.value = 0
     load.Canvas:getChildByName("label"):getChildByName("scorevalue"):setString(score.value)
-    -- 血量加满 -- 
-    -- hero.hp = 100
-    heroSet[1]:setHP(100)
-    -- 生命数加满 --
-    heroSet[1]:setLife(3)
-    --load.Canvas:getChildByName("label"):getChildByName("lifevalue"):setString(hero.life)
     -- 道具初始化 --
     prop.bombnum = 5
     local bombnumlabel = load.Canvas:getChildByName("label"):getChildByName("bombnumlabel"):setString(prop.bombnum)
@@ -26,8 +20,12 @@ function controller.initData()
     bullet.set = {}
     bullet.Tag = 0
 
-    -- 所有的节点全部清空 --
-    -- to do
+    -- 英雄销毁 --
+    for i, v in pairs(heroSet) do
+        v:removeFromParent()
+        heroSet[i] = nil
+    end
+    heroSet = {}
 end
 
 function controller.keySwitch()
@@ -44,6 +42,7 @@ function controller.setBulletAndAlienPause()
     for _, v in pairs(bullet.set) do
         v:pause()
     end
+    heroSet[1]:pause()
 end
 
 function controller.setBulletAndAlienResume()
@@ -56,6 +55,7 @@ function controller.setBulletAndAlienResume()
         v:resume()	
 
     end
+    heroSet[1]:resume()
 end
 
 return controller

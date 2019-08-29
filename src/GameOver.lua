@@ -4,12 +4,7 @@ function gameover.mainScene()
     local scoreMax = score.value
     schedule.pause()
     controller.initData()
-    -- ÒÆ³ýµÐ»ú ---
-    heroSet[1]:removeFromParent()
-    heroSet[1] = nil
-    heroSet = {}
-    --cc.Director:getInstance():pause()
-    --schedule.pause()
+    -- controller.setBulletAndAlienPause()
     local overReader = creator.CreatorReader:createWithFilename('Resources/creator/Scene/gameover.ccreator')
     overReader:setup()
     local overScene = overReader:getSceneGraph()
@@ -31,7 +26,6 @@ function gameover.mainScene()
             -- local str = "You have "..prop.bomnum.."bombs.Clear all,and get G3000."
             --cc.Director:getInstance():resume()
             load.loadGame()
-            -- schedule.setup()
         end
     end)
 
