@@ -18,7 +18,7 @@ function Hero:ctor(x, y)
     self:addChild(content)
     load.Canvas:addChild(self)
 
-    self:setPosition(0, 0)
+    self:setPosition(-49.5, -300)
     -- 构造的时候把对象大小的矩形保存 --
     local box = self:getBoundingBox()
     self.box = box

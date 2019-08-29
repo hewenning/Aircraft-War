@@ -41,7 +41,7 @@ function schedule.setup()
 
 end
 
-function schedule.pause()
+function schedule.shutdown()
     --cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.heroMove)    
     cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.backgroundEntry)
     cc.Director:getInstance():getScheduler():unscheduleScriptEntry(schedule.backgroundEntry)

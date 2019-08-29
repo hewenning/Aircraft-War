@@ -2,7 +2,7 @@ gameover ={Canvas = 0,}
 
 function gameover.mainScene()
     local scoreMax = score.value
-    schedule.pause()
+    schedule.shutdown()
     controller.initData()
     -- controller.setBulletAndAlienPause()
     local overReader = creator.CreatorReader:createWithFilename('Resources/creator/Scene/gameover.ccreator')

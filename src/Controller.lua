@@ -35,7 +35,7 @@ function controller.keySwitch()
 end
 
 function controller.setBulletAndAlienPause()
-    schedule.pause()
+    schedule.shutdown()
     for _, k in pairs(alien.set) do
         k:pause()
     end
