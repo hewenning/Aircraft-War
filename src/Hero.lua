@@ -115,24 +115,24 @@ end
 
 -- 定义英雄移动的函数 --
 function Hero:doLeft()
-    if self:getPositionX() > -240 then
+    if self:getPositionX() > -300 then
         self:runAction(cc.MoveBy:create(0.1, cc.p(-6, 0)))  
-    elseif self:getPositionX() <= -240 then
-        self:runAction(cc.MoveTo:create(0.01, cc.p(-240, self:getPositionY())))
+    elseif self:getPositionX() <= -300 then
+        self:runAction(cc.MoveTo:create(0.01, cc.p(-300, self:getPositionY())))
     end
 end
 function Hero:doRight()
-    if self:getPositionX() < 260 then
+    if self:getPositionX() < 214.5 then
         self:runAction(cc.MoveBy:create(0.1, cc.p(6, 0)))  
-    elseif self:getPositionX() >= 260 then
-        self:runAction(cc.MoveTo:create(0.01, cc.p(260, self:getPositionY())))
+    elseif self:getPositionX() >= 214.5 then
+        self:runAction(cc.MoveTo:create(0.01, cc.p(214.5, self:getPositionY())))
     end
 end
 function Hero:doUp()
-    if self:getPositionY() < 520 then
+    if self:getPositionY() < 470 then
         self:runAction(cc.MoveBy:create(0.1, cc.p(0, 6)))  
-    elseif self:getPositionX() >= 520 then
-        self:runAction(cc.MoveTo:create(0.01, cc.p(self:getPositionX(), 520)))
+    elseif self:getPositionX() >= 470 then
+        self:runAction(cc.MoveTo:create(0.01, cc.p(self:getPositionX(), 470)))
     end
 end
 function Hero:doDown()

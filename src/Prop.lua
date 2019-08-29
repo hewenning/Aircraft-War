@@ -28,13 +28,13 @@ function prop.bombRelease()
         local bomb = sceneBomb:getChildByName("bomb")
         bomb:removeFromParent(false)
         load.Canvas:addChild(bomb)
-        bomb:setPosition(heroSet[1]:getPositionX() + 320, heroSet[1]:getPositionY() + 480)
+        bomb:setPosition(heroSet[1]:getPositionX() + 370, heroSet[1]:getPositionY() + 480)
 
 
         -- 清空所有对象 --
         local action = cc.Sequence:create( 
             {
-                cc.MoveTo:create(2, cc.p(heroSet[1]:getPositionX() + 320, 500)),
+                cc.MoveTo:create(2, cc.p(heroSet[1]:getPositionX() + 370, 500)),
                 actionBomb, 
                 cc.CallFunc:create( function()
                     for i, v in pairs(alien.set) do
