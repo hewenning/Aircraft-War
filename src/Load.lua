@@ -1,5 +1,3 @@
-require "schedule"
-
 load = {hero = 1, Canvas = 1, heroBox = 1, loadCanvas = 1,}
 
 function load.loadUI()
