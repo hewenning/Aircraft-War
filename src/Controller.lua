@@ -77,7 +77,7 @@ function controller.infoDisplay(str)
     -- 对于传进来的节点进行处理 --
     load.Canvas:addChild(infoNode)
     -- infoNode:setPosition(node:getPositionX(), node:getPositionY())
-    infoNode:setPosition(320, 650)
+    infoNode:setPosition(320, 700)
     infoNode:getChildByName("infolabel"):setString(str)
 
     -- 显示三秒之后销毁 --
