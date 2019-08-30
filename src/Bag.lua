@@ -17,6 +17,7 @@ function bag.exitBagView()
             print("Exitbag button pressed.")
             load.Canvas:getChildByName("bag"):removeFromParent()
             controller.setBulletAndAlienResume()
+            menu.pressTag = 0 
         end
     end)
 end

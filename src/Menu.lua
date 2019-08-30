@@ -1,4 +1,4 @@
-menu = {}
+menu = {pressTag = 0}
 
 function menu.mainButton()
     local button = load.Canvas:getChildByName("menu")
@@ -9,8 +9,11 @@ function menu.mainButton()
         if (0 == eventType)  then
             print("pressed")
             -- 在这里暂停所有的动画 --
-            controller.setBulletAndAlienPause()
-            menu.itemsChoose()
+            if menu.pressTag == 0 then
+                controller.setBulletAndAlienPause()
+                menu.itemsChoose()
+                menu.pressTag = 1     
+            end
         elseif (1 == eventType)  then
             print("move")
         elseif  (2== eventType) then
@@ -58,7 +61,9 @@ function menu.itemsChoose()
         if (0 == eventType)  then
             print("Save button pressed.")
             archive.saveGame()
-            -- itemsButton:removeFromParent()
+            controller.setBulletAndAlienResume()
+            itemsButton:removeFromParent()
+            menu.pressTag = 0 
         end
     end)
     -- 定义装载游戏的按钮 --
@@ -67,6 +72,7 @@ function menu.itemsChoose()
             print("Load button pressed.")
             archive.loadGame()
             -- itemsButton:removeFromParent()
+            menu.pressTag = 0 
         end
     end)
 
@@ -98,6 +104,7 @@ function menu.itemsChoose()
             controller.initData()
             load.loadGame()
             --itemsButton:removeFromParent()
+            menu.pressTag = 0 
         end
     end)
     -- 定义继续游戏的按钮 --
@@ -106,6 +113,7 @@ function menu.itemsChoose()
             print("Continue button pressed.")
             controller.setBulletAndAlienResume()
             itemsButton:removeFromParent()
+            menu.pressTag = 0
         end
     end)
 
