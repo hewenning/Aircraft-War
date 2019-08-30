@@ -62,26 +62,6 @@ function Bullet:destroy()
     print("The bullet has been cleared.") 
 end
 
-
--- -- 检测空格键或则回车按下的时候 --
--- function bullet.createBullet()
---     if keyboard.keyStatus[59] == 1 or keyboard.keyStatus[164] == 1 then
---         local newbullet = Bullet.new(0, 0)
---         newbullet:getBullet()
---         newbullet:play()
---         table.insert(bullet.set, newbullet)
---     end
--- end
-
--- function bullet.destoryOutBullet()
---     for i, k in pairs(bullet.set) do
---         if k:getPositionY() >= 500 then
---             k:removeFromParent()
---             bullet.set[i] = nil
---         end
---     end
--- end
-
 return bullet
 
 
