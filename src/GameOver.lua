@@ -1,9 +1,13 @@
 gameover ={Canvas = 0,}
 
 function gameover.mainScene()
-    -- 取出分数值 --
-    local scoreMax = score.value
-    -- schedule.shutdown()
+    -- 取出当前分数和最高分数 --
+    local scoreValue = score.value
+    local scoreMax = cc.UserDefault:getInstance():getIntegerForKey("scoreMax")
+    if scoreValue >= scoreMax then
+        cc.UserDefault:getInstance():setIntegerForKey("scoreMax", scoreValue)
+        scoreMax = scoreValue
+    end
     gamelogic.shutdown()
     controller.initData()
     -- controller.setBulletAndAlienPause()
@@ -17,10 +21,10 @@ function gameover.mainScene()
     gameover.Canvas = children[2]
 
     -- 分数值刷上去 --
-    local maxscore = gameover.Canvas:getChildByName("maxscore")
-    local maxhistory = gameover.Canvas:getChildByName("maxhistory")
-    maxscore:setString(scoreMax)
-    maxhistory:setString(scoreMax)
+    local scoreNode = gameover.Canvas:getChildByName("score")
+    local maxhistoryNode = gameover.Canvas:getChildByName("maxhistory")
+    scoreNode:setString(scoreValue)
+    maxhistoryNode:setString(scoreMax)
 
     local restart = gameover.Canvas:getChildByName("restart")
     restart:addTouchEventListener(function(sender, eventType)

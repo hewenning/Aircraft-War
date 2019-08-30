@@ -16,6 +16,7 @@ require "menu"
 require "hero"
 require "gamelogic"
 
+
 -- cclog信息 --
 cclog = function(...)
     print(string.format(...))
@@ -69,8 +70,6 @@ local function main()
 
     -- 传入随机种子 --
     math.randomseed(tostring(os.time()):reverse():sub(1, 6))
-
-
 
     -- 运行时的时候查看节点树 --
     do

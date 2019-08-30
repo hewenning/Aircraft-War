@@ -97,7 +97,7 @@ function menu.itemsChoose()
             print("Restart button pressed.")
             controller.initData()
             load.loadGame()
-            itemsButton:removeFromParent()
+            --itemsButton:removeFromParent()
         end
     end)
     -- 定义继续游戏的按钮 --
