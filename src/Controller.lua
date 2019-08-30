@@ -73,7 +73,6 @@ function controller.infoDisplay(str)
     local infoScene = infoReader:getSceneGraph()
     local infoNode = infoScene:getChildByName("info")
     infoNode:removeFromParent(false)
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>")
     -- 对于传进来的节点进行处理 --
     load.Canvas:addChild(infoNode)
     -- infoNode:setPosition(node:getPositionX(), node:getPositionY())
