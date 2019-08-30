@@ -17,6 +17,7 @@ function mall.exitMallView()
             print("Exitmall button pressed.")
             load.Canvas:getChildByName("mall"):removeFromParent()
             controller.setBulletAndAlienResume()
+            menu.pressTag = 0 
         end
     end)
 end
