@@ -4,7 +4,6 @@ function archive.saveGame()
     -- print("Save game.")
     controller.infoDisplay("Game data saved successfully.")
     cc.UserDefault:getInstance():setIntegerForKey("score", score.value)
-    cc.UserDefault:getInstance():setIntegerForKey("scoreMax", score.value)
     cc.UserDefault:getInstance():setIntegerForKey("life", heroSet[1]:getLife())
     cc.UserDefault:getInstance():setIntegerForKey("hp", heroSet[1]:getHP())
     cc.UserDefault:getInstance():setIntegerForKey("bombnum", prop.bombnum)
@@ -22,10 +21,7 @@ function archive.loadGame()
     local scoreValue = cc.UserDefault:getInstance():getIntegerForKey("score")
     cclog("scoreValue is %d", scoreValue)
     score.value = scoreValue
-
-    -- 加载最高分数，这个功能等会写 --
-    local scoreMaxValue = cc.UserDefault:getInstance():getIntegerForKey("scoreMax")
-    cclog("scoreMaxValue is %d", scoreMaxValue)
+    score.refreshScoreValue()
 
     -- 加载英雄生命值 --
     local heroLife = cc.UserDefault:getInstance():getIntegerForKey("life")
