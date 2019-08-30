@@ -87,5 +87,4 @@ function mall.propFirstBuy()
     end)
 end
 
-
 return mall
