@@ -82,10 +82,9 @@ function mall.propFirstBuy()
     propbombButton:addTouchEventListener(function(sender, eventType)
         if (0 == eventType)  then
             print("PropbombButton button pressed.")
-            prop.infoDisplay("Cost G5000.Clear all,and get G3000.") 
+            controller.infoDisplay("Cost G5000.Clear all,and get G3000.") 
         end
     end)
 end
-
 
 return mall

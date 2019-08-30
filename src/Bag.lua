@@ -38,7 +38,7 @@ function bag.propFirstInfo()
         if (0 == eventType)  then
             print("PropbombButton button pressed.")
             -- local str = "You have "..prop.bomnum.."bombs.Clear all,and get G3000."
-            prop.infoDisplay("Clear all,and get G3000.") 
+            controller.infoDisplay("Clear all,and get G3000.") 
         end
     end)
 end
