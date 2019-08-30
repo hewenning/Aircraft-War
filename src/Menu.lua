@@ -30,12 +30,14 @@ function menu.itemsChoose()
     itemsButton:removeFromParent(false)
     load.Canvas:addChild(itemsButton)     
     
-    -- 获取五个按钮节点 -- 
+    -- 获取七个按钮节点 -- 
     local mallButton = itemsButton:getChildByName("mall")
     local bagButton = itemsButton:getChildByName("bag")
     local exitButton = itemsButton:getChildByName("exit")
     local restartButton = itemsButton:getChildByName("restart")
     local continueButton = itemsButton:getChildByName("continue")
+    local saveButton = itemsButton:getChildByName("save")
+    local loadButton = itemsButton:getChildByName("load")
 
     -----------------
     --   商城部分   --
@@ -45,6 +47,26 @@ function menu.itemsChoose()
             print("Mall button pressed.")
             mall.mallView()
             itemsButton:removeFromParent()
+        end
+    end)
+
+    -----------------
+    -- 游戏控制部分 --
+    -----------------
+    -- 定义保存游戏的按钮 --
+    saveButton:addTouchEventListener(function(sender, eventType)
+        if (0 == eventType)  then
+            print("Save button pressed.")
+            archive.saveGame()
+            -- itemsButton:removeFromParent()
+        end
+    end)
+    -- 定义装载游戏的按钮 --
+    loadButton:addTouchEventListener(function(sender, eventType)
+        if (0 == eventType)  then
+            print("Load button pressed.")
+            archive.loadGame()
+            -- itemsButton:removeFromParent()
         end
     end)
 
@@ -69,7 +91,6 @@ function menu.itemsChoose()
             cc.Director.sharedDirector():endToLua()
         end
     end)
-
     -- 定义重新开始按钮 --
     restartButton:addTouchEventListener(function(sender, eventType)
         if (0 == eventType)  then
@@ -79,7 +100,6 @@ function menu.itemsChoose()
             itemsButton:removeFromParent()
         end
     end)
-
     -- 定义继续游戏的按钮 --
     continueButton:addTouchEventListener(function(sender, eventType)
         if (0 == eventType)  then
