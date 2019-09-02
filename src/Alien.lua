@@ -225,5 +225,4 @@ function Alien:destroy()
     end
 end
 
-
 return alien
