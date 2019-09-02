@@ -121,8 +121,8 @@ function Alien:destroy()
             local animationA = cc.Animation:create()
             local nameA 
             for i = 1, 5 do
-                nameA = "alienA/alienA"..i..".png"
-                animationA:addSpriteFrameWithFile(nameA)
+                nameA = "alienA"..i..".png"
+                animationA:addSpriteFrame(cc.SpriteFrameCache:getInstance():getSpriteFrame(nameA))
             end
             -- Should last 1 second. And there are 5 frames.
             animationA:setDelayPerUnit(0.5 / 5.0)
@@ -148,8 +148,8 @@ function Alien:destroy()
         
         -- 被击打的动画 --
         local animationBhit = cc.Animation:create()
-        local nameBhit = "alienB/alienBhit.png"
-        animationBhit:addSpriteFrameWithFile(nameBhit)
+        local nameBhit = "alienBhit.png"
+        animationBhit:addSpriteFrame(cc.SpriteFrameCache:getInstance():getSpriteFrame(nameBhit))
         -- Should last 1 second. And there are 5 frames.
         animationBhit:setDelayPerUnit(0.2 / 1)
         animationBhit:setRestoreOriginalFrame(true)
@@ -161,8 +161,8 @@ function Alien:destroy()
             local animationB = cc.Animation:create()
             local nameB
             for i = 1, 5 do
-                nameB = "alienB/alienB"..i..".png"
-                animationB:addSpriteFrameWithFile(nameB)
+                nameB = "alienB"..i..".png"
+                animationB:addSpriteFrame(cc.SpriteFrameCache:getInstance():getSpriteFrame(nameB))
             end
             -- Should last 1 second. And there are 5 frames.
             animationB:setDelayPerUnit(0.8 / 5.0)
@@ -188,8 +188,8 @@ function Alien:destroy()
         
         -- 被击打的动画 --
         local animationChit = cc.Animation:create()
-        local nameChit = "alienC/alienChit.png"
-        animationChit:addSpriteFrameWithFile(nameChit)
+        local nameChit = "alienChit.png"
+        animationChit:addSpriteFrame(cc.SpriteFrameCache:getInstance():getSpriteFrame(nameChit))
         -- Should last 1 second. And there are 5 frames.
         animationChit:setDelayPerUnit(0.2 / 1)
         animationChit:setRestoreOriginalFrame(true)
@@ -201,8 +201,8 @@ function Alien:destroy()
             local animationC = cc.Animation:create()
             local nameC
             for i = 1, 7 do
-                nameC = "alienC/alienC"..i..".png"
-                animationC:addSpriteFrameWithFile(nameC)
+                nameC = "alienC"..i..".png"
+                animationC:addSpriteFrame(cc.SpriteFrameCache:getInstance():getSpriteFrame(nameC))
             end
             -- Should last 1 second. And there are 5 frames.
             animationC:setDelayPerUnit(1.0 / 5.0)
