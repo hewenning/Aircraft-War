@@ -9,13 +9,16 @@ function archive.saveGame()
     -- cc.UserDefault:getInstance():setIntegerForKey("bombnum", prop.bombnum)
 
     -- 测试是否能正确使用protobuf --
+    -- 返回给定文件名的完整路径 --
     local pbFilePath = cc.FileUtils:getInstance():fullPathForFilename("protobuf/MsgProtocol.pb")
+    -- 打出完整路径 --
     release_print("PB file path: "..pbFilePath)
-    
+    -- pb.register_file "addressbook.pb"
+    -- 注册函数 --
     local buffer = read_protobuf_file_c(pbFilePath)
-    protobuf.register(buffer) --注:protobuf 是因为在protobuf.lua里面使用module(protobuf)来修改全局名字
-    
-    local stringbuffer = protobuf.encode("Person",      
+    protobuf.register(buffer)
+
+    local stringbuffer = protobuf.encode("Hero",      
         {      
             name = "Alice",      
             id = 12345,      
@@ -35,7 +38,7 @@ function archive.saveGame()
         temp = temp .. string.format("0xX, ", string.byte(stringbuffer, i))
     end
     release_print(temp)
-    local result = protobuf.decode("Person", stringbuffer)
+    local result = protobuf.decode("Hero", stringbuffer)
     release_print("result name: "..result.name)
     release_print("result name: "..result.id)
 

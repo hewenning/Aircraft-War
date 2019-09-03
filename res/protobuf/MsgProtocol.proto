@@ -1,4 +1,4 @@
-message Person {
+message Hero {
   required string name = 1;
   required int32 id = 2;
   optional string email = 3;
@@ -18,5 +18,5 @@ message Person {
 }
 
 message AddressBook {
-  repeated Person person = 1;
+  repeated Hero person = 1;
 }
