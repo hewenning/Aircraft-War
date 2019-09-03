@@ -1,14 +1,12 @@
 message Hero {
-  required int32 score = 1;
-  required int32 life = 2;
-  required int32 hp = 3;
-  required int32 bombnum = 4;
+  optional int32 score = 1;
+  optional int32 life = 2;
+  optional int32 hp = 3;
+  optional int32 bombnum = 4;
 }
 message Score {
-  required int32 scoreMax = 1;
+  optional int32 scoreMax = 1;
 }
-
-// 嵌套使用Hero信息
 message AddressBook {
   optional Hero person = 1;
   optional Score history = 2;
