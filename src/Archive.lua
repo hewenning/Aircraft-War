@@ -1,13 +1,5 @@
-archive = {}
-
-function archive.saveGame()
-    -- print("Save game.")
-    controller.infoDisplay("Game data saved successfully.")
-    -- cc.UserDefault:getInstance():setIntegerForKey("score", score.value)
-    -- cc.UserDefault:getInstance():setIntegerForKey("life", heroSet[1]:getLife())
-    -- cc.UserDefault:getInstance():setIntegerForKey("hp", heroSet[1]:getHP())
-    -- cc.UserDefault:getInstance():setIntegerForKey("bombnum", prop.bombnum)
-
+archive = {infoTable= {},}
+function archive.EncodeAndDecodeProtobuf()
     -- 测试是否能正确使用protobuf --
     -- 返回给定文件名的完整路径 --
     local pbFilePath = cc.FileUtils:getInstance():fullPathForFilename("protobuf/MsgProtocol.pb")
@@ -20,28 +12,19 @@ function archive.saveGame()
 
     local stringbuffer = protobuf.encode("Hero",      
         {      
-            name = "Alice",      
-            id = 12345,      
-            phone = {      
-                {      
-                    number = "87654321"      
-                },      
-            }      
+            score = score.value,      
+            life = heroSet[1]:getLife(),
+            hp = heroSet[1]:getHP(),
+            bombnum =  prop.bombnum,        
         })           
-    
-    
-    local slen = string.len(stringbuffer)
-    release_print("slen = "..slen)
-    
-    local temp = ""
-    for i=1, slen do
-        temp = temp .. string.format("0xX, ", string.byte(stringbuffer, i))
-    end
-    release_print(temp)
-    local result = protobuf.decode("Hero", stringbuffer)
-    release_print("result name: "..result.name)
-    release_print("result name: "..result.id)
+    local loadArchiveInfo = protobuf.decode("Hero", stringbuffer)
+    archive.infoTable = loadArchiveInfo
+end
 
+function archive.saveGame()
+    -- print("Save game.")
+    controller.infoDisplay("Game data saved successfully.")
+    archive.EncodeAndDecodeProtobuf()
 end
 
 function archive.loadGame()
@@ -51,25 +34,23 @@ function archive.loadGame()
     controller.initData()
     load.loadGame()
     controller.infoDisplay("The game data is loaded successfully.")
-    
+
+    -- 解码,加载信息 --
+    local loadArchiveInfo = protobuf.decode("Hero", buffer)
+    archive.infoTable = loadArchiveInfo
     -- 加载分数 --
-    local scoreValue = cc.UserDefault:getInstance():getIntegerForKey("score")
-    cclog("scoreValue is %d", scoreValue)
-    score.value = scoreValue
+    cclog("scoreValue is %d", archive.infoTable.score)
+    score.value = archive.infoTable.score
     score.refreshScoreValue()
-
     -- 加载英雄生命值 --
-    local heroLife = cc.UserDefault:getInstance():getIntegerForKey("life")
-    cclog("heroLife is %d", heroLife)
-    heroSet[1]:setLife(heroLife)
-
-    local heroHP = cc.UserDefault:getInstance():getIntegerForKey("hp")
-    cclog("heroHP is %d", heroHP)
-    heroSet[1]:setHPbar(heroHP)
-
-    local bombNumber = cc.UserDefault:getInstance():getIntegerForKey("bombnum")
-    cclog("bombNumber is %d", bombNumber)
-    prop.bombnum = bombNumber
+    cclog("heroLife is %d", archive.infoTable.life)
+    heroSet[1]:setLife(archive.infoTable.life)
+    -- 英雄的血条 --
+    cclog("heroHP is %d", archive.infoTable.hp)
+    heroSet[1]:setHPbar(archive.infoTable.hp)
+    -- 英雄的炸弹数量 --
+    cclog("bombNumber is %d", archive.infoTable.bombnum)
+    prop.bombnum = archive.infoTable.bombnum
     prop.refreshBombNum()
  
 end
