@@ -1,33 +1,34 @@
 archive = {infoTable= {},}
 
 -- 编码和解码函数 --
-function archive.EncodeAndDecodeProtobuf()
-    -- 测试是否能正确使用protobuf --
-    -- 返回给定文件名的完整路径 --
-    local pbFilePath = cc.FileUtils:getInstance():fullPathForFilename("protobuf/MsgProtocol.pb")
-    -- 打出完整路径 --
-    release_print("PB file path: "..pbFilePath)
-    -- pb.register_file "addressbook.pb"
-    -- 注册函数 --
-    local buffer = read_protobuf_file_c(pbFilePath)
-    protobuf.register(buffer)
+function archive.protobufRegister()
 
-    local stringbuffer = protobuf.encode("Hero",      
-        {      
-            score = score.value,      
-            life = heroSet[1]:getLife(),
-            hp = heroSet[1]:getHP(),
-            bombnum =  prop.bombnum,        
-        })           
-    local loadArchiveInfo = protobuf.decode("Hero", stringbuffer)
-    archive.infoTable = loadArchiveInfo
 end
 
 -- 保存游戏 --
 function archive.saveGame()
     -- print("Save game.")
     controller.infoDisplay("Game data saved successfully.")
-    archive.EncodeAndDecodeProtobuf()
+    -- 注册pb文件 --
+    local pbFilePath = cc.FileUtils:getInstance():fullPathForFilename("protobuf/MsgProtocol.pb")
+    release_print("PB file path: "..pbFilePath)
+    local buffer = read_protobuf_file_c(pbFilePath)
+    protobuf.register(buffer)
+
+    -- 把要存入的数据进行解析 --
+    local data = protobuf.encode("Hero",      
+        {      
+            score = score.value,      
+            life = heroSet[1]:getLife(),
+            hp = heroSet[1]:getHP(),
+            bombnum =  prop.bombnum,        
+        })
+    -- 把缓冲数据写入文件 --
+    local txtFilePath = cc.FileUtils:getInstance():fullPathForFilename("protobuf/test.txt")     
+    local txtFile = io.open(txtFilePath, "w")
+    txtFile:write(data)
+    txtFile.close()
+    print("Save content to test.txt.")
 end
 
 -- 载入游戏 --
@@ -39,20 +40,34 @@ function archive.loadGame()
     load.loadGame()
     controller.infoDisplay("The game data is loaded successfully.")
 
-    -- 解码,加载信息 --
+    -- 注册pb文件，并利用pb文件进行解码 --
+    local pbFilePath = cc.FileUtils:getInstance():fullPathForFilename("protobuf/MsgProtocol.pb")
+    release_print("PB file path: "..pbFilePath)
+    local buffer = read_protobuf_file_c(pbFilePath)
+    protobuf.register(buffer)
+    -- 读取txt文件中的字符串 --
+    local txtFilePath = cc.FileUtils:getInstance():fullPathForFilename("protobuf/test.txt")     
+    local txtFile = io.open(txtFilePath, "r")
+    local stringbuffer = txtFile:read("*all")
+    txtFile:close()
+    print("Load data from test.txt.")
+    -- 进行解码 --
+    local loadArchiveInfo = protobuf.decode("Hero", stringbuffer)
+    print(loadArchiveInfo)
+    
     -- 加载分数 --
-    cclog("scoreValue is %d", archive.infoTable.score)
-    score.value = archive.infoTable.score
+    cclog("scoreValue is %d", loadArchiveInfo.score)
+    score.value = loadArchiveInfo.score
     score.refreshScoreValue()
     -- 加载英雄生命值 --
-    cclog("heroLife is %d", archive.infoTable.life)
-    heroSet[1]:setLife(archive.infoTable.life)
+    cclog("heroLife is %d", loadArchiveInfo.life)
+    heroSet[1]:setLife(loadArchiveInfo.life)
     -- 英雄的血条 --
-    cclog("heroHP is %d", archive.infoTable.hp)
-    heroSet[1]:setHPbar(archive.infoTable.hp)
+    cclog("heroHP is %d", loadArchiveInfo.hp)
+    heroSet[1]:setHPbar(loadArchiveInfo.hp)
     -- 英雄的炸弹数量 --
-    cclog("bombNumber is %d", archive.infoTable.bombnum)
-    prop.bombnum = archive.infoTable.bombnum
+    cclog("bombNumber is %d", loadArchiveInfo.bombnum)
+    prop.bombnum = loadArchiveInfo.bombnum
     prop.refreshBombNum()
  
 end
