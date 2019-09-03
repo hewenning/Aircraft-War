@@ -4,70 +4,57 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>alienA1.png</key>
+            <key>load1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{61,43},{51,39}}</string>
+                <string>{{40,41},{48,36}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{51,39}}</string>
+                <string>{{0,0},{48,36}}</string>
                 <key>sourceSize</key>
-                <string>{51,39}</string>
+                <string>{48,36}</string>
             </dict>
-            <key>alienA2.png</key>
+            <key>load2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{61,2},{51,39}}</string>
+                <string>{{2,2},{108,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{51,39}}</string>
+                <string>{{0,0},{108,37}}</string>
                 <key>sourceSize</key>
-                <string>{51,39}</string>
+                <string>{108,37}</string>
             </dict>
-            <key>alienA3.png</key>
+            <key>load3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,55},{51,47}}</string>
+                <string>{{2,41},{176,36}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{51,47}}</string>
+                <string>{{0,0},{176,36}}</string>
                 <key>sourceSize</key>
-                <string>{51,47}</string>
+                <string>{176,36}</string>
             </dict>
-            <key>alienA4.png</key>
+            <key>load4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{57,51}}</string>
+                <string>{{112,2},{2,4}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{57,51}}</string>
+                <string>{{0,0},{2,4}}</string>
                 <key>sourceSize</key>
-                <string>{57,51}</string>
-            </dict>
-            <key>alienA5.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{55,84},{47,39}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{47,39}}</string>
-                <key>sourceSize</key>
-                <string>{47,39}</string>
+                <string>{2,4}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -75,13 +62,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>alienB.png</string>
+            <string>load.png</string>
             <key>size</key>
-            <string>{128,128}</string>
+            <string>{128,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:18d5b38ab610eabe15b41e9ba024a90d:290d8c54ae29b1fa788c678bba84fe47:68d3b9dc49141e754c1254e3290ff1fd$</string>
+            <string>$TexturePacker:SmartUpdate:a7ff56c153f9052f4754b73d6ade1bcb:9c814433865cc74523892b16485138a0:3161f6e26cbac4ff944c17b495cfd273$</string>
             <key>textureFileName</key>
-            <string>alienB.png</string>
+            <string>load.png</string>
         </dict>
     </dict>
 </plist>

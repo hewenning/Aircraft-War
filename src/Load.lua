@@ -14,14 +14,20 @@ function load.loadUI()
     -- 在精灵上加载动画 --
     local sprite = load.loadCanvas:getChildByName("load")
 
+    -- 利用精灵帧缓存所有的图片 --
+    cc.SpriteFrameCache:getInstance():addSpriteFrames("plist/load.plist")
+    cc.SpriteFrameCache:getInstance():addSpriteFrames("plist/alienA.plist")
+    cc.SpriteFrameCache:getInstance():addSpriteFrames("plist/alienB.plist")
+    cc.SpriteFrameCache:getInstance():addSpriteFrames("plist/alienC.plist")
+    cc.SpriteFrameCache:getInstance():addSpriteFrames("plist/bombAction.plist")
+
     -- 加载动画 --
     local loadActionFrame = cc.Animation:create()
     local nameLoad 
     for i = 1, 4 do
-        nameLoad = "load/load"..i..".png"
-        loadActionFrame:addSpriteFrameWithFile(nameLoad)
+        nameLoad = "load"..i..".png"
+        loadActionFrame:addSpriteFrame(cc.SpriteFrameCache:getInstance():getSpriteFrame(nameLoad))
     end
-    -- Should last 1 second. And there are 5 frames.
     loadActionFrame:setDelayPerUnit(2 / 4)
     loadActionFrame:setRestoreOriginalFrame(true)
     local loadAction = cc.Animate:create(loadActionFrame)
@@ -59,6 +65,7 @@ function load.loadGame()
     -- 测试英雄类 --
     local heroObject = Hero.new(0, 0)
     table.insert(heroSet, heroObject)
+
 
     -------------------
     -- 启动调度器设置 --

@@ -13,8 +13,8 @@ function prop.bombRelease()
         local animationBomb = cc.Animation:create()
         local nameBomb
         for i = 1, 4 do
-            nameBomb = "bomb/bombaction"..i..".png"
-            animationBomb:addSpriteFrameWithFile(nameBomb)
+            nameBomb = "bombaction"..i..".png"
+            animationBomb:addSpriteFrame(cc.SpriteFrameCache:getInstance():getSpriteFrame(nameBomb))
         end
         -- Should last 1 second. And there are 5 frames.
         animationBomb:setDelayPerUnit(0.8 / 3.0)
