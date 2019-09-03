@@ -4,10 +4,12 @@ message Hero {
   optional int32 hp = 3;
   optional int32 bombnum = 4;
 }
+
 message Score {
   optional int32 scoreMax = 1;
 }
-message AddressBook {
+
+message Book {
   optional Hero person = 1;
   optional Score history = 2;
 }
