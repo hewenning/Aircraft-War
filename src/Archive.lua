@@ -47,14 +47,14 @@ function archive.loadGame()
     protobuf.register(buffer)
     -- 读取txt文件中的字符串 --
     local txtFilePath = cc.FileUtils:getInstance():fullPathForFilename("protobuf/test.txt")     
-    local txtFile = io.open(txtFilePath, "r")
-    local stringbuffer = txtFile:read("*all")
+    local txtFile = io.open(txtFilePath, "rb")
+    local stringbuffer = txtFile:read("*a")
     txtFile:close()
     print("Load data from test.txt.")
     -- 进行解码 --
     local loadArchiveInfo = protobuf.decode("Hero", stringbuffer)
     print(loadArchiveInfo)
-    
+
     -- 加载分数 --
     cclog("scoreValue is %d", loadArchiveInfo.score)
     score.value = loadArchiveInfo.score
