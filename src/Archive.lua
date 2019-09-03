@@ -1,4 +1,6 @@
 archive = {infoTable= {},}
+
+-- 编码和解码函数 --
 function archive.EncodeAndDecodeProtobuf()
     -- 测试是否能正确使用protobuf --
     -- 返回给定文件名的完整路径 --
@@ -21,12 +23,14 @@ function archive.EncodeAndDecodeProtobuf()
     archive.infoTable = loadArchiveInfo
 end
 
+-- 保存游戏 --
 function archive.saveGame()
     -- print("Save game.")
     controller.infoDisplay("Game data saved successfully.")
     archive.EncodeAndDecodeProtobuf()
 end
 
+-- 载入游戏 --
 function archive.loadGame()
     -- print("Load game.")
     -- 先清空所有的信息 --
@@ -36,8 +40,6 @@ function archive.loadGame()
     controller.infoDisplay("The game data is loaded successfully.")
 
     -- 解码,加载信息 --
-    local loadArchiveInfo = protobuf.decode("Hero", buffer)
-    archive.infoTable = loadArchiveInfo
     -- 加载分数 --
     cclog("scoreValue is %d", archive.infoTable.score)
     score.value = archive.infoTable.score
