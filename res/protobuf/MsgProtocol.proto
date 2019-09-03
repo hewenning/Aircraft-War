@@ -1,22 +1,33 @@
-message Person {
-  required string name = 1;
-  required int32 id = 2;
-  optional string email = 3;
+message Hero {
+  required int32 score = 1;
+  required int32 life = 2;
+  required int32 hp = 3;
+  required int32 bombnum = 4;
+  // // required是必须的，optional是可选的
+  // required string name = 1;
+  // required int32 id = 2;
+  // optional string email = 3;
 
-  enum PhoneType {
-    MOBILE = 0;
-    HOME = 1;
-    WORK = 2;
-  }
+  // // 枚举类型
+  // enum PhoneType {
+  //   MOBILE = 0;
+  //   HOME = 1;
+  //   WORK = 2;
+  // }
 
-  message PhoneNumber {
-    required string number = 1;
-    optional PhoneType type = 2 [default = HOME];
-  }
+  // message PhoneNumber {
+  //   required string number = 1;
+  //   optional PhoneType type = 2 [default = HOME];
+  // }
 
-  repeated PhoneNumber phone = 4;
+  // repeated PhoneNumber phone = 4;
+}
+message Score {
+  required int32 scoreMax = 1;
 }
 
+// 嵌套使用Hero信息
 message AddressBook {
-  repeated Person person = 1;
+  optional Hero person = 1;
+  optional Score history = 2;
 }
