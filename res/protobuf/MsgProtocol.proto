@@ -9,7 +9,7 @@ message Score {
   optional int32 scoreMax = 1;
 }
 
-message Book {
+message HeroBook {
   optional Hero person = 1;
   optional Score history = 2;
 }
